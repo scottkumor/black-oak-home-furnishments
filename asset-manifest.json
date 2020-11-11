@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/black-oak-home-furnishments/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/black-oak-home-furnishments/static/js/main.218f84d4.chunk.js",
+    "main.js.map": "/black-oak-home-furnishments/static/js/main.218f84d4.chunk.js.map",
+    "runtime-main.js": "/black-oak-home-furnishments/static/js/runtime-main.944cc3c1.js",
+    "runtime-main.js.map": "/black-oak-home-furnishments/static/js/runtime-main.944cc3c1.js.map",
+    "static/js/2.115c29c3.chunk.js": "/black-oak-home-furnishments/static/js/2.115c29c3.chunk.js",
+    "static/js/2.115c29c3.chunk.js.map": "/black-oak-home-furnishments/static/js/2.115c29c3.chunk.js.map",
+    "static/js/3.595f690c.chunk.js": "/black-oak-home-furnishments/static/js/3.595f690c.chunk.js",
+    "static/js/3.595f690c.chunk.js.map": "/black-oak-home-furnishments/static/js/3.595f690c.chunk.js.map",
+    "index.html": "/black-oak-home-furnishments/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/black-oak-home-furnishments/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.115c29c3.chunk.js.LICENSE.txt": "/black-oak-home-furnishments/static/js/2.115c29c3.chunk.js.LICENSE.txt",
+    "static/media/logo.103b5fa1.svg": "/black-oak-home-furnishments/static/media/logo.103b5fa1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.944cc3c1.js",
+    "static/js/2.115c29c3.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.218f84d4.chunk.js"
+  ]
+}
