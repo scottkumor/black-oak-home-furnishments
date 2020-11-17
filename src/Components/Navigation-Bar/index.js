@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./styles.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faBars, faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 export default class NavBar extends Component {
   render() {
@@ -25,7 +25,7 @@ export default class NavBar extends Component {
           </div>
           <div className="cart-btn">
             <span className="nav-icon">
-              <FontAwesomeIcon icon={faCartPlus}/>
+              <FontAwesomeIcon icon={faShoppingCart}/>
             </span>
             <div className="cart-items">0</div>
           </div>
