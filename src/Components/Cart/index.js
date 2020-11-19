@@ -9,7 +9,7 @@ export default class Cart extends Component {
             <div className="cart-overlay">
                 <div className="cart">
                     <span className="close-cart">
-                        <FontAwesomeIcon icon={faWindowClose} />
+                        <FontAwesomeIcon icon={faWindowClose} onClick = {this.props.handler}/>
                     </span>
                     <h2>Your Cart</h2>
                     <div className="cart-content">
