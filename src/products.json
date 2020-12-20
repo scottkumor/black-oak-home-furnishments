@@ -1,68 +1,84 @@
-{
-  "items": [
-    {
-      "sys": { "id": "1" },
-      "fields": {
-        "title": "queen panel bed",
-        "price": 10.99,
-        "image": { "fields": { "file": { "url": "./images/product-1.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "2" },
-      "fields": {
-        "title": "king panel bed",
-        "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/product-2.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "3" },
-      "fields": {
-        "title": "single panel bed",
-        "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/product-3.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "4" },
-      "fields": {
-        "title": "twin panel bed",
-        "price": 22.99,
-        "image": { "fields": { "file": { "url": "./images/product-4.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "5" },
-      "fields": {
-        "title": "fridge",
-        "price": 88.99,
-        "image": { "fields": { "file": { "url": "./images/product-5.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "6" },
-      "fields": {
-        "title": "dresser",
-        "price": 32.99,
-        "image": { "fields": { "file": { "url": "./images/product-6.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "7" },
-      "fields": {
-        "title": "couch",
-        "price": 45.99,
-        "image": { "fields": { "file": { "url": "./images/product-7.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "8" },
-      "fields": {
-        "title": "table",
-        "price": 33.99,
-        "image": { "fields": { "file": { "url": "./images/product-8.jpeg" } } }
-      }
-    }
-  ]
-}
+[
+  {
+    "id": "1",
+    "title": "king panel bed",
+    "price": 799.99,
+    "image": "/images/product-1.jpeg",
+    "type": "bed",
+    "category": "bedroom",
+    "set":"board room collection"
+  },
+  {
+    "id": "2",
+    "title": "queen floater bed",
+    "price": 999.99,
+    "image": "/images/product-2.jpeg",
+    "type": "bed",
+    "category": "bedroom",
+    "set":"modern collection"
+    
+  },
+  {
+    "id": "3",
+    "title": "full panel bed",
+    "price": 599.99,
+    "image": "/images/product-3.jpeg",
+    "type": "bed",
+    "category": "bedroom",
+    "set":"ascencdance collection"
+  },
+  {
+    "id": "4",
+    "title": "full platform bed",
+    "price": 699.99,
+    "image": "/images/product-4.jpeg",
+    "type": "bed",
+    "category": "bedroom",
+    "set":"ardent collection"
+  },
+  {
+    "id": "5",
+    "title": "modern end table",
+    "price": 48.99,
+    "image": "/images/product-5.jpg",
+    "type": "side-table",
+    "category": "tables",
+    "set":"modern collection"
+  },
+  {
+    "id": "6",
+    "title": "dresser",
+    "price": 520.99,
+    "image": "/images/product-6.jpeg",
+    "type": "dresser",
+    "category": "bedroom",
+    "set":"ascencdance collection"
+  },
+  {
+    "id": "7",
+    "title": "sectional couch",
+    "price": 745.99,
+    "image": "/images/product-7.jpeg",
+    "type": "seating",
+    "category": "living",
+    "set":"ardent collection"
+  },
+  {
+    "id": "8",
+    "title": "round table",
+    "price": 233.99,
+    "image": "/images/product-8.jpeg",
+    "type": "kitchen-table",
+    "category": "kitchen and dining",
+    "set":"modern collection"
+  },
+  {
+    "id": "9",
+    "title": "modern dining chair",
+    "price": 33.99,
+    "image": "/images/product-9.jpg",
+    "type": "dining-chair",
+    "category": "kitchen and dining",
+    "set":"modern collection"
+  }
+]

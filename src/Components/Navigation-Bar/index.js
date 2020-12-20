@@ -19,6 +19,59 @@ export default class NavBar extends Component {
       alignItems:"center"
     }
 
+    // const cartBtn  = document.querySelector('.cart-btn');
+    // const clearcartBtn  = document.querySelector('.clear-cart');
+    // const cartOverlay  = document.querySelector('.cart-overlay');
+    // const cartItems  = document.querySelector('.cart-items');
+    // const cartTotal  = document.querySelector('.cart-total');
+    // const cartContent  = document.querySelector('.cart-content');
+    // const cartDOM  = document.querySelector('.cart');
+
+    // const productsDOM  = document.querySelector('.products-center');
+
+    // let cart = [];
+
+    //getting products
+    // class Products {
+    //   async getProducts(){
+    //     try {
+    //       let result = await fetch(ProductsDB);
+    //       let data = await result.text();
+    //       return data;
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
+    // }
+
+    // //display products
+    // // class UI {
+
+    // // }
+
+    // //local storage
+    // // class Storage {
+
+    // // }
+
+    // // listener
+    // document.addEventListener("DOMContentLoaded", ()=>{
+
+    //   //const ui = new UI ()
+    //   const products = new Products ()
+
+    //   //get all products
+    //   products.getProducts().then(data => console.log(data))
+    // })
+
+
+
+
+
+
+
+
+
     return (
       <>
         <nav className="navbar">

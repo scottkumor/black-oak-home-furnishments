@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./styles.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import Product from "./../Product/index.js"
+import ProductsDB from "./../../products.json"
 
 
 
@@ -13,17 +13,21 @@ export default class Products extends Component {
                     <h2>Our Products</h2>
                 </div>
                 <div className="products-center">
-                    <article className="product">
-                        <div className="img-container">
-                            <img src="./../../images/product-1.jpeg" alt="product-1" className="product-img"/>
-                        </div>
-                        <button className="bag-btn" data-id="1">
-                            <FontAwesomeIcon icon={faCartPlus}/>
-                            Add to Cart
-                        </button>
-                        <h3>Queen Bed</h3>
-                        <h4>$1000</h4>
-                    </article>
+                    {ProductsDB.map(item => (
+                        <Product
+                            id={item.id}
+                            key={item.id}
+                            title={item.title}
+                            price={item.price}
+                            image={item.image}
+                            category={item.category}
+                            set={item.set}
+                            type= {item.type}
+                            // description={item.description} short desc
+                            // link={item.link} link to its own modal? page?
+                            // icon={item.icon} icon based on category
+                        />
+                    ))}
                 </div>
             </section>
         );

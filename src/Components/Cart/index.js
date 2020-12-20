@@ -17,7 +17,7 @@ export default class Cart extends Component {
                             <img src="./../../images/product-1.jpeg" alt="cart item" />
                             <div>
                                 <h4> queen bed </h4>
-                                <h5> $1000 </h5>
+                                <h5> $2000 </h5>
                                 <span className="remove-item">remove</span>
                             </div>
                             <div>
