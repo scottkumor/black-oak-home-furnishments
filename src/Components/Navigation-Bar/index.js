@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
+
 import "./styles.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faShoppingCart, faWindowClose, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
@@ -16,7 +18,9 @@ export default class NavBar extends Component {
     var colStyle = {
       display: "flex",
       flexDirection: "column",
-      alignItems:"center"
+      alignItems:"center",
+      textDecoration:"none",
+      color:"black"
     }
 
     // const cartBtn  = document.querySelector('.cart-btn');
@@ -82,10 +86,10 @@ export default class NavBar extends Component {
 
             </span>
             {/* <img src="./../../images/logo.svg" alt="store logo" /> */}
-            <div style={colStyle}>
+            <Link to="/" style={colStyle}>
               <div> Black Oak </div>
               <div>Home Furnishments</div>
-            </div>
+            </Link>
             <div className="cart-btn">
               <span className="nav-icon">
                 <FontAwesomeIcon icon={faShoppingCart} onClick={this.Toggle}

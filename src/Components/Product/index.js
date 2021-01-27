@@ -1,10 +1,11 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import "./style.css"
 
 function Product(props) {
     return (
-        <article className="product" id={props.id} data-type={props.type}>
+        <article className="product" key={props.id} data-type={props.type}>
             <div className="img-container">
                 <img src={process.env.PUBLIC_URL + `${props.image}`} alt={props.title} className="product-img" />
             </div>

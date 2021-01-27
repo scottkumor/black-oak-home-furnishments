@@ -21,7 +21,7 @@ export default class Products extends Component {
                             price={item.price}
                             image={item.image}
                             category={item.category}
-                            set={item.set}
+                            collection={item.collection}
                             type= {item.type}
                             // description={item.description} short desc
                             // link={item.link} link to its own modal? page?
