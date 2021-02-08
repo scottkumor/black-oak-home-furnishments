@@ -2,7 +2,8 @@ import React from "react";
 import "./styles.css"
 import Product from "./../../Components/Product/index"
 import Hero from "./../../Components/Hero-Image/index"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import ProductsDB from "./../../products.json"
 
 
@@ -56,7 +57,7 @@ export default function Collections() {
         <>
             <Hero id="headWrap" 
                 heading="Collections"
-                subHeading="Browse by Collection"
+                subHeading="Shop Pieces"
                 link="/"
             />
 
@@ -76,7 +77,7 @@ export default function Collections() {
                                     id={item.id}
                                     key={item.id}
                                     title={item.title}
-                                    price={item.price}
+                                    price={"$"+item.price}
                                     image={item.image}
                                     category={item.category}
                                     collection={item.collection}
@@ -86,7 +87,13 @@ export default function Collections() {
                                 // icon={item.icon} icon based on category
                                 />
                             ))}
+                            
                         </div>
+                        <button className="moreBtn">
+                                <div>See the {collection[0]} Page</div>
+                                <FontAwesomeIcon icon={faArrowRight} size="2x"></FontAwesomeIcon>
+                            </button>
+
                     </div>
                 ))}
             </div>

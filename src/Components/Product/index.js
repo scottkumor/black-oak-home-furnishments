@@ -16,7 +16,7 @@ function Product(props) {
             <h3>{props.title}</h3>
             <h3>{props.category}</h3>
             <h4>{props.set}</h4>
-            <h4>${props.price}</h4>
+            <h4>{props.price}</h4>
             {/* add one for type that comes in as an icon */}
             
             {/* <p> {props.description}</p> */}
