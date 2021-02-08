@@ -34,7 +34,7 @@
     "image": "/images/product-4.jpeg",
     "type": "bed",
     "category": "bedroom",
-    "collection":"ardent collection"
+    "collection":"ardence collection"
   },
   {
     "id": 5,
@@ -57,11 +57,11 @@
   {
     "id": 7,
     "title": "sectional couch",
-    "price": 745.99,
+    "price": 545.99,
     "image": "/images/product-7.jpeg",
     "type": "seating",
     "category": "living",
-    "collection":"ardent collection"
+    "collection":"ardence collection"
   },
   {
     "id": 8,
@@ -89,5 +89,113 @@
     "type": "dining-chair",
     "category": "kitchen and dining",
     "collection":"executive collection"
+  },
+  {
+    "id": 11,
+    "title": "dining chair",
+    "price": 44.99,
+    "image": "/images/product-11.jpg",
+    "type": "dining-chair",
+    "category": "kitchen and dining",
+    "collection":"ascencdance collection"
+  },
+  {
+    "id": 12,
+    "title": "velvet chair",
+    "price": 74.99,
+    "image": "/images/product-12.jpg",
+    "type": "seating",
+    "category": "living",
+    "collection":"ardence collection"
+  },
+  {
+    "id": 13,
+    "title": "vintage chair and table set",
+    "price": 364.99,
+    "image": "/images/product-13.jpg",
+    "type": "seating",
+    "category": "living",
+    "collection":"ascencdance collection"
+  },
+  {
+    "id": 14,
+    "title": "easy arm chair",
+    "price": 364.99,
+    "image": "/images/product-14.jpg",
+    "type": "seating",
+    "category": "living",
+    "collection":"ardence collection"
+  },
+  {
+    "id": 15,
+    "title": "compact loveseat",
+    "price": 412.99,
+    "image": "/images/product-15.jpg",
+    "type": "seating",
+    "category": "living",
+    "collection":"ascencdance collection"
+  },
+  {
+    "id": 16,
+    "title": "executive sectional",
+    "price": 899.99,
+    "image": "/images/product-16.jpg",
+    "type": "seating",
+    "category": "living",
+    "collection":"executive collection"
+  },
+  {
+    "id": 17,
+    "title": "pastel table",
+    "price": 90.99,
+    "image": "/images/product-17.jpg",
+    "type": "kitchen-table",
+    "category": "kitchen and dining",
+    "collection":"modern collection"
+  },
+  {
+    "id": 18,
+    "title": "wooden side table",
+    "price": 30.99,
+    "image": "/images/product-18.jpg",
+    "type": "side-table",
+    "category": "tables",
+    "collection":"ardence collection"
+  },
+  {
+    "id": 19,
+    "title": "exotic room divider",
+    "price": 62.99,
+    "image": "/images/product-19.jpg",
+    "type": "decoration",
+    "category": "bedroom",
+    "collection":"ardence collection"
+  },
+  {
+    "id": 20,
+    "title": "long shelf",
+    "price": 39.99,
+    "image": "/images/product-20.jpg",
+    "type": "decoration",
+    "category": "living",
+    "collection":"modern collection"
+  },
+  {
+    "id": 21,
+    "title": "marble cabinet",
+    "price": 359.99,
+    "image": "/images/product-21.jpg",
+    "type": "decoration",
+    "category": "storage",
+    "collection":"executive collection"
+  },
+  {
+    "id": 22,
+    "title": "pineapple lamp",
+    "price": 26.99,
+    "image": "/images/product-22.jpg",
+    "type": "lighting",
+    "category": "table lamps",
+    "collection":"ardence collection"
   }
 ]

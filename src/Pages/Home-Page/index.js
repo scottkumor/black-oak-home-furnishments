@@ -13,7 +13,7 @@ export default class Home extends Component {
     <>
       <Hero 
         heading="Furniture Selection"
-        subHeading="Shop Pieces"
+        subHeading="Browse by Collection"
         link="/collections"
       />
       <Products />
