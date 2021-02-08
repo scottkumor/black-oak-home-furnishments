@@ -11,7 +11,11 @@ export default class Home extends Component {
   render() {
     return (
     <>
-      <Hero />
+      <Hero 
+        heading="Furniture Selection"
+        subHeading="Shop Pieces"
+        link="/collections"
+      />
       <Products />
     </>
     );
