@@ -1,6 +1,15 @@
-.hero {
+.hero-home {
   min-height: calc(100vh - 60px);
-  background: url("./hero-bcg.jpeg") center/cover no-repeat;
+  background: url("./home.jpeg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+}
+
+.hero-collections {
+  min-height: calc(100vh - 60px);
+  background: url("./collections.jpeg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
