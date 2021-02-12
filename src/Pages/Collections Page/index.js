@@ -55,7 +55,9 @@ export default function Collections() {
     return (
 
         <>
-            <Hero id="headWrap" 
+            <Hero 
+                tag="collections"
+                id="headWrap" 
                 heading="Collections"
                 subHeading="Shop Pieces"
                 link="/"

@@ -12,6 +12,7 @@ export default class Home extends Component {
     return (
     <>
       <Hero 
+        tag="home"
         heading="Furniture Selection"
         subHeading="Browse by Collection"
         link="/collections"
