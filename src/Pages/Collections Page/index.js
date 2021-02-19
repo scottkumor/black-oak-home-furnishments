@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css"
 import Product from "./../../Components/Product/index"
 import Hero from "./../../Components/Hero-Image/index"
+import Header from "./../../Components/Section-Header/index"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import ProductsDB from "./../../products.json"
@@ -55,15 +56,26 @@ export default function Collections() {
     return (
 
         <>
-            <Hero 
+            <Hero
                 tag="collections"
-                id="headWrap" 
+                id="headWrap"
                 heading="Collections"
                 subHeading="Shop Pieces"
                 link="/"
             />
 
-            <div id="collWrap" >
+            <Header
+                header="Browse by Collection"
+                description="
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+                    culpa qui officia deserunt mollit anim id est laborum."
+            />
+            <div className="collWrap" >
 
                 {/* map the sections out*/}
                 {sortedCollections.map((collection) => (
@@ -73,28 +85,27 @@ export default function Collections() {
                         <h3 className="sectionTitle">{collection[0]}</h3>
 
                         {/* map each product into its respective section from the nested array*/}
-                        <div className ="prodWrap">
+                        <div className="prodWrap">
                             {collection[1].map(item => (
                                 <Product
                                     id={item.id}
                                     key={item.id}
                                     title={item.title}
-                                    price={"$"+item.price}
+                                    price={"$" + item.price}
                                     image={item.image}
                                     category={item.category}
-                                    collection={item.collection}
                                     type={item.type}
                                 // description={item.description} short desc
                                 // link={item.link} link to its own modal? page?
                                 // icon={item.icon} icon based on category
                                 />
                             ))}
-                            
+
                         </div>
                         <button className="moreBtn">
-                                <div>See the {collection[0]} Page</div>
-                                <FontAwesomeIcon icon={faArrowRight} size="2x"></FontAwesomeIcon>
-                            </button>
+                            <div>See the {collection[0]} Page</div>
+                            <FontAwesomeIcon icon={faArrowRight} size="2x"></FontAwesomeIcon>
+                        </button>
 
                     </div>
                 ))}

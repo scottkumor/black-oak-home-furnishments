@@ -21,7 +21,7 @@
   {
     "id": 3,
     "title": "full panel bed",
-    "price": 599.99,
+    "price": 799.99,
     "image": "/images/product-3.jpeg",
     "type": "bed",
     "category": "bedroom",
@@ -30,7 +30,7 @@
   {
     "id": 4,
     "title": "full platform bed",
-    "price": 699.99,
+    "price": 899.99,
     "image": "/images/product-4.jpeg",
     "type": "bed",
     "category": "bedroom",
