@@ -1,48 +1,63 @@
-#headWrap {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content: center;
-    margin: 20vh;
-}
 
-#headWrap h1{
-    
-}
 
-#collWrap {
+.collWrap {
     display:flex;
     flex-direction: column;
-    margin: 5vh;
-    
+    margin: 5vh;   
 }
 
 .sectionTitle {
     text-transform: capitalize;
     font-size: xxx-large;
+    width: 100%;
+    background: linear-gradient(to right, transparent, var(--mainGrey) 99%, transparent 100%);
+    text-align: left;
+    padding: 3vh;
+    
 }
 
 .prodWrap {
     display:flex;
     margin:2vh;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
-.product {
-    margin: 1vh;
-    padding: 1vh;
-    border: solid rgba(0,0,0,.05)
-}
 
 .collContainer {
-    margin: 2vh;
+    position: relative;
     padding: 2vh;
-    border: solid rgba(0,0,0,.1);
-    min-width: 90vw;
     max-width: 90vw;
     display:flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items:center;
+    margin-bottom: 15vh;
+
+}
+
+.collContainer::before, .collContainer::after {
+    display: block;
+    content: "";
+    width: 40%;
+    height: 70%;
+    position: absolute;
+}
+
+.collContainer::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--primaryColor);
+    border-left: 3px solid var(--primaryColor);
+    
+}
+
+.collContainer::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--primaryColor);
+    border-right: 3px solid var(--primaryColor);
 }
 
 .moreBtn {
@@ -50,20 +65,23 @@
     align-items: center;
     justify-content: center;
     max-width:100%;
-    margin: 0 3vh;
+    margin-top: 7vh;
     background: var(--mainWhite);
-    border:none;
     transition: var(--mainTransition);
     padding: 1vh 0;
     font-size: large;
     border: solid 1px var(--primaryColor);
+    cursor:pointer;
+    margin-left:auto;
+    margin-right:0;
+    z-index:1;
 }
 
 .moreBtn:hover {
     color:var(--mainBlack);
     background: var(--primaryColor);
-    border: solid 1px var(--mainBlack)
-
+    border: solid 1px var(--mainBlack);
+    
 }
 
 .moreBtn > svg {
@@ -74,11 +92,9 @@
 
 .moreBtn:hover > svg {
     color:var(--mainBlack);
-
 }
 
 .moreBtn > div {
     text-transform: capitalize;
     margin: 0 2vh;
-
 }
