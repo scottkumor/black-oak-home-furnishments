@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import "./styles.css";
-import Product from "./../../Components/Product"
-import ProductsDB from "./../../products.json"
-import Hero from './../../Components/Hero-Image/index';
-import Header from "./../../Components/Section-Header/index"
+import Product from "../../Components/Product"
+import ProductsDB from "../../products.json"
+import Hero from '../../Components/Hero-Image/index';
+import Header from "../../Components/Section-Header/index"
 
 
 import "./styles.css";
 
 
-export default class Home extends Component {
+export default class All extends Component {
 
   render() {
     return (
       <>
         <Hero
-          tag="home"
+          tag="all"
           heading="Furniture Selection"
           subHeading="Browse by Collection"
           link="/collections"

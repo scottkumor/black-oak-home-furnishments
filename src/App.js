@@ -1,5 +1,6 @@
 //import './App.css';
-import Home from './Pages/Home-Page/index'
+import Home from "./Pages/Home/index"
+import All from './Pages/All-Furniture/index'
 import NavBar from './Components/Navigation-Bar/index'
 import Collections from './Pages/Collections Page/index'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
@@ -19,6 +20,9 @@ function App() {
      <Switch>
      <Route path="/collections">
        <Collections />
+     </Route>
+     <Route path="/all">
+       <All />
      </Route>
      <Route path="/">
        <Home />
