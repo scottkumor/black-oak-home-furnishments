@@ -106,7 +106,7 @@ padding: 2vh;
   margin: 0 1vh;
 }
 
-.modalLinkBtn {
+/* .modalLinkBtn {
   background: var(--mainWhite);
   border: solid var(--mainBlack) .3px;
   border-radius: 0;
@@ -130,7 +130,7 @@ padding: 2vh;
 
 .modalLinkBtn > div {
   text-transform: capitalize;
-}
+} */
 
 
 .modalBtn {

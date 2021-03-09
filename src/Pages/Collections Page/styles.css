@@ -68,25 +68,25 @@
     margin-top: 7vh;
     background: var(--mainWhite);
     transition: var(--mainTransition);
-    padding: 1vh 0;
+    padding: 1vh;
     font-size: large;
     border: solid 1px var(--primaryColor);
     cursor:pointer;
     margin-left:auto;
     margin-right:0;
     z-index:1;
+    text-decoration:none;
+    color: var(--mainBlack)
 }
 
 .moreBtn:hover {
-    color:var(--mainBlack);
     background: var(--primaryColor);
     border: solid 1px var(--mainBlack);
-    
 }
 
 .moreBtn > svg {
     color:var(--primaryColor);
-    margin: 0 2vh;
+    margin-left: 2vh;
     transition: var(--mainTransition);
 }
 
@@ -96,5 +96,8 @@
 
 .moreBtn > div {
     text-transform: capitalize;
-    margin: 0 2vh;
+}
+
+.moreBtn > p {
+    display:flex;
 }

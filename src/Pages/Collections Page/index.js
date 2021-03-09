@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import "./styles.css"
 import Product from "./../../Components/Product/index"
 import Hero from "./../../Components/Hero-Image/index"
@@ -61,7 +62,7 @@ export default function Collections() {
                 id="headWrap"
                 heading="Collections"
                 subHeading="Shop Pieces"
-                link="/"
+                link="/all"
             />
 
             <Header
@@ -102,15 +103,15 @@ export default function Collections() {
                             ))}
 
                         </div>
-                        <button className="moreBtn">
-                            <div>See the {collection[0]} Page</div>
+
+                        <Link to={"/" + collection[0]} className="moreBtn">
+                           <p>See the&nbsp;</p><div>{collection[0]}</div><p>&nbsp;Page</p>
                             <FontAwesomeIcon icon={faArrowRight} size="2x"></FontAwesomeIcon>
-                        </button>
+                        </Link>
 
                     </div>
                 ))}
             </div>
         </>
     )
-
 }    

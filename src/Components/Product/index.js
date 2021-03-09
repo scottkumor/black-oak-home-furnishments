@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCartPlus } from '@fortawesome/free-solid-svg-icons'
-import {Link} from "react-router-dom";
-import "./styles.css"
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
+import "./styles.css"
 
 
 
@@ -63,11 +62,7 @@ function Product(props) {
                             <FontAwesomeIcon icon={faCartPlus} />
                             <div> Add to Cart </div>
                         </button>
-                        <Link className="modalLinkBtn" to="/">
-                            <p>See the entire &nbsp; </p> 
-                            <div>{props.collection}</div>
-                            <FontAwesomeIcon icon={faArrowRight}/>
-                        </Link>
+                        
                     </div>
                 </div>
             </Modal>

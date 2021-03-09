@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.executive-pageWrap {
+    
+    --execPrimary:#780001;
+    --execSecondary: #4a0001;
+    --execTertiary: #cf0600;
+    --execAccent: #ff8901;
+    --execBackground: #fffdbf;
+}
+
+.executive-headWrap {
+    color: var(--execSecondary);
+    border-width: 3px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        var(--execTertiary), 
+        var(--execBackground)
+      ) 1 100%;
+}
+
+.executive-collTitle{
+    font-family: 'Great Vibes', serif;
+}
+
+.executive-collDescription{
+    
+}
+
+.executive-collSubTitle{
+    font-family: 'Great Vibes', serif;
+    border: 0px;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, var(--execBackground) 0%, var(--execBackground) 50%, var(--execBackground) 100%);
+    border-image-slice: 1;
+}
+
+.executive-products {
+    /*  */
+}
+
+.executive-backBtn{
+    color: var(--execAccent)
+}
+
+.executive-backBtn:hover{
+    color: var(--execBackground);
+    background-color:var(--execAccent);
+    
+}
+
+.executive-cardImage{
+    max-width: 50vw;
+    height:auto;
+}
