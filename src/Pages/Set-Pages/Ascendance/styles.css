@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
+
+.pageWrap {
+    background:radial-gradient(#8c8b79  0%, #7aa667 70%);
+    --ascPrimary:#3a1202 ;
+    --ascSecondary: #c2ccd4;
+    --ascTertiary: #8c8b79;
+    --ascAccent: #1db7cf;
+    --ascBackground: #7aa667;
+}
+
+.headWrap {
+    color: var(--ascPrimary);
+    border-width: 3px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        var(--ascTertiary), 
+        var(--ascBackground)
+      ) 1 100%;
+}
+
+.collTitle{
+    font-family: 'El Messiri', sans-serif;
+}
+
+.collSubTitle{
+    font-family: 'El Messiri', sans-serif;
+}
+
+.ascendance {
+    color:var(--ascSecondary)
+}
+
+.back-btn{
+    margin: 10vh;
+}

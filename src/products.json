@@ -25,7 +25,7 @@
     "image": "/images/product-3.jpeg",
     "type": "bed",
     "category": "bedroom",
-    "collection":"ascencdance collection"
+    "collection":"ascendance collection"
   },
   {
     "id": 4,
@@ -52,7 +52,7 @@
     "image": "/images/product-6.jpeg",
     "type": "dresser",
     "category": "bedroom",
-    "collection":"ascencdance collection"
+    "collection":"ascendance collection"
   },
   {
     "id": 7,
@@ -97,7 +97,7 @@
     "image": "/images/product-11.jpg",
     "type": "dining-chair",
     "category": "kitchen and dining",
-    "collection":"ascencdance collection"
+    "collection":"ascendance collection"
   },
   {
     "id": 12,
@@ -115,7 +115,7 @@
     "image": "/images/product-13.jpg",
     "type": "seating",
     "category": "living",
-    "collection":"ascencdance collection"
+    "collection":"ascendance collection"
   },
   {
     "id": 14,
@@ -133,7 +133,7 @@
     "image": "/images/product-15.jpg",
     "type": "seating",
     "category": "living",
-    "collection":"ascencdance collection"
+    "collection":"ascendance collection"
   },
   {
     "id": 16,
