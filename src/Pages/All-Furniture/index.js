@@ -4,12 +4,14 @@ import Product from "../../Components/Product"
 import ProductsDB from "../../products.json"
 import Hero from '../../Components/Hero-Image/index';
 import Header from "../../Components/Section-Header/index"
-
-
 import "./styles.css";
 
 
 export default class All extends Component {
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
 
   render() {
     return (

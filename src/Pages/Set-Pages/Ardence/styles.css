@@ -1,16 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-.pageWrap {
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items:center;
-    max-width:100vw;
-    height:auto;
-    background:radial-gradient(#fec300  0%, var(--mainWhite) 70%);
-
-
-
+.ardence-pageWrap {
+   
     --ardPrimary:#fd6326 ;
     --ardSecondary: #c2ccd4;
     --ardTertiary: #d2e4ed;
@@ -18,58 +8,46 @@
     --ardBackground: #fec300;
 }
 
-.headWrap {
-    color: var(--ardPrimary);
-    text-align:center;
-
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items:center;
-    width: 80%;
-    margin: 5vh;
-    border-width: 3px;
-    border-style: solid;
-    border-image: 
-      linear-gradient(
-        to bottom, 
-        var(--ardTertiary), 
-        var(--ardBackground)
-      ) 1 100%;
+.ardence-headWrap {
+    color: var(--ardSecondary);
 }
 
-.collTitle{
-    font-family: 'Righteous', cursive;
-    font-size: 500%;
+
+.ardence-collDescription::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--ardTertiary) ;
+    border-left: 3px solid var(--ardTertiary) ;
 }
 
-.collDescription{
-    margin:4vh;
-    font-size:large;
-    width: 70%;
+.ardence-collDescription::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--ardTertiary);
+    border-right: 3px solid var(--ardTertiary);
 }
 
-.collSubTitle{
-    font-family: 'Righteous', cursive;
-    font-size: 250%;
+.ardence-collSubTitle{
     border: 0px;
-    padding: 2vh;
-    width: 80%;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, var(--ardBackground) 0%, var(--ardAccent) 50%, var(--ardBackground) 100%);
+    border-image-slice: 1;
 }
 
-.products {
-    width: 90vw;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    grid-column-gap: 1.5rem;
-    grid-row-gap: 2rem;
+.ardence-cardsWrap {
+    border-image: 
+    linear-gradient(
+    to bottom, 
+    var(--ardTertiary), 
+    var(--ardBackground)
+    ) 1 100%;
 }
 
-.ardence {
-    color:var(--ardSecondary)
+.ardence-backBtn{
+    color: var(--ardTertiary)
 }
 
-.back-btn{
-    margin: 10vh;
+.ardence-backBtn:hover{
+    color: var(--ardBackground);
+    background-color:var(--ardTertiary);   
 }

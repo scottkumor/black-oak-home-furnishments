@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
 
-.pageWrap {
-    background:radial-gradient(#8c8b79  0%, #7aa667 70%);
+.ascendance-pageWrap {
+    
     --ascPrimary:#3a1202 ;
     --ascSecondary: #c2ccd4;
     --ascTertiary: #8c8b79;
@@ -9,30 +8,46 @@
     --ascBackground: #7aa667;
 }
 
-.headWrap {
-    color: var(--ascPrimary);
-    border-width: 3px;
-    border-style: solid;
+.ascendance-headWrap {
+    color: var(--ascSecondary);
+}
+
+
+.ascendance-collDescription::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--ascTertiary) ;
+    border-left: 3px solid var(--ascTertiary) ;
+}
+
+.ascendance-collDescription::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--ascTertiary);
+    border-right: 3px solid var(--ascTertiary);
+}
+
+.ascendance-collSubTitle{
+    border: 0px;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, var(--ascBackground) 0%, var(--ascAccent) 50%, var(--ascBackground) 100%);
+    border-image-slice: 1;
+}
+
+.ascendance-cardsWrap {
     border-image: 
-      linear-gradient(
-        to bottom, 
-        var(--ascTertiary), 
-        var(--ascBackground)
-      ) 1 100%;
+    linear-gradient(
+    to bottom, 
+    var(--ascTertiary), 
+    var(--ascBackground)
+    ) 1 100%;
 }
 
-.collTitle{
-    font-family: 'El Messiri', sans-serif;
+.ascendance-backBtn{
+    color: var(--ascTertiary)
 }
 
-.collSubTitle{
-    font-family: 'El Messiri', sans-serif;
-}
-
-.ascendance {
-    color:var(--ascSecondary)
-}
-
-.back-btn{
-    margin: 10vh;
+.ascendance-backBtn:hover{
+    color: var(--ascBackground);
+    background-color:var(--ascTertiary);   
 }

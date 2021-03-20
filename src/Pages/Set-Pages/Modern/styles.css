@@ -1,15 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100&display=swap');
-
-.pageWrap {
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items:center;
-    max-width:100vw;
-    height:auto;
-    background:linear-gradient(to bottom, var(--mainWhite) 0%, #92ddea 100%);
-
-
+.modern-pageWrap {
+    
     --modPrimary:#9579d1 ;
     --modSecondary: #7eb8da;
     --modTertiary: #be9ddf;
@@ -17,58 +7,46 @@
     --modBackground: #92ddea;
 }
 
-.headWrap {
-    color: var(--modPrimary);
-    text-align:center;
-
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items:center;
-    width: 80%;
-    margin: 5vh;
-    border-width: 3px;
-    border-style: solid;
-    border-image: 
-      linear-gradient(
-        to bottom, 
-        var(--modTertiary), 
-        var(--modBackground)
-      ) 1 100%;
+.modern-headWrap {
+    color: var(--modSecondary);
 }
 
-.collTitle{
-    font-family: 'Spartan', sans-serif;
-    font-size: 500%;
+
+.modern-collDescription::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--modTertiary) ;
+    border-left: 3px solid var(--modTertiary) ;
 }
 
-.collDescription{
-    margin:4vh;
-    font-size:large;
-    width: 70%;
+.modern-collDescription::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--modTertiary);
+    border-right: 3px solid var(--modTertiary);
 }
 
-.collSubTitle{
-    font-family: 'Spartan', sans-serif;
-    font-size: 250%;
+.modern-collSubTitle{
     border: 0px;
-    padding: 2vh;
-    width: 80%;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, var(--modBackground) 0%, var(--modAccent) 50%, var(--modBackground) 100%);
+    border-image-slice: 1;
 }
 
-.products {
-    width: 90vw;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    grid-column-gap: 1.5rem;
-    grid-row-gap: 2rem;
+.modern-cardsWrap {
+    border-image: 
+    linear-gradient(
+    to bottom, 
+    var(--modTertiary), 
+    var(--modBackground)
+    ) 1 100%;
 }
 
-.modern {
-    color:var(--modSecondary)
+.modern-backBtn{
+    color: var(--modTertiary)
 }
 
-.back-btn{
-    margin: 10vh;
+.modern-backBtn:hover{
+    color: var(--modBackground);
+    background-color:var(--modTertiary);   
 }

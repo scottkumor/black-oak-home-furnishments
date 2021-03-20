@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 
 export default class Executive extends Component {
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
 
         let prodsArray = [];
@@ -18,29 +22,29 @@ export default class Executive extends Component {
         }
 
         // trim the 'collection' off the end of the string so it can be used for unique classes
-            let set = prodsArray[0].collection.split(' ')[0];
+            let collection = prodsArray[0].collection.split(' ')[0];
 
         return (
-            <div className={set+"-pageWrap"}>
+            <div className={collection+"-pageWrap"}>
 
-                <div className={set+"-headWrap"}>
-                    <div className={set+"-collTitle"}>
+                <div className={collection+"-headWrap"}>
+                    <div className={collection+"-collTitle"}>
                         The Executive Collection
                     </div>
 
-                    <p className={set+"-collDescription"}>
+                    <p className={collection+"-collDescription"}>
                         The Executive Collection is all about class - each of these products exhudes
                         a presence that can only be matched in the upper echelons. Now you
                         too can be high society when you bring any of these fine furnishments into
                         your home.
                     </p>
 
-                    <div className={set+"-collSubTitle"}>
+                    <div className={collection+"-collSubTitle"}>
                         Project Greatness.
                     </div>
                 </div>
 
-                <div className={set+"-cardsWrap"}>
+                <div className={collection+"-cardsWrap"}>
                     {prodsArray.map(item => (
                         <Card
                             id={item.id}
@@ -57,7 +61,7 @@ export default class Executive extends Component {
                         />
                     ))}
                 </div>
-                <Link to="/collections" className={set+"-backBtn"}>Back to Collections</Link>
+                <Link to="/collections" className={collection+"-backBtn"}>Back to Collections</Link>
 
             </div>
         )
