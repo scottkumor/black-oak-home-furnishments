@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom"
 import "./styles.css"
 import Product from "./../../Components/Product/index"
@@ -11,6 +11,12 @@ import ProductsDB from "./../../products.json"
 
 export default function Collections() {
 
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
+    
     //-------- final master global list of collections with filled in products
     let sortedCollections = [];
 
