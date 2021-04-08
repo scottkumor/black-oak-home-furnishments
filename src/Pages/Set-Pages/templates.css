@@ -20,8 +20,8 @@
 
 [class$="-collTitle"] {
     font-size: 400%;
-    white-space: nowrap;
-    max-width:90vw;
+    /* make fonts responsive
+    font-size: calc( 60px + (80 - 60) * (100vw - 1080px) / (1440 - 1080) );    max-width:90vw; */
 }
 
 [class$="-collSubTitle"] {
@@ -67,7 +67,58 @@
 
 }
 
+[class$="-cardWrap"]{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 27px 4px;
+    margin: 4vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 70vw;
+}
+
 [class$="-cardImage"]{
-    max-width: 50vw;
+    max-width: 100%;
     height:auto;
+}
+
+[class$="-detailsWrap"]{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+[class$="-cardTitle"]{
+    font-size: xx-large;
+    width: 100%;
+}
+
+[class$="-blurb"]{
+    font-size:large;
+    text-align:center;
+    margin: 4vh;
+    padding: 4vh;
+    max-width: 70%;
+    position: relative;
+}
+
+[class$="-blurb"]::before, [class$="-blurb"]::after {
+    display: block;
+    content: "";
+    width: 40%;
+    height: 70%;
+    position: absolute;
+}
+
+
+[class$="-category"]{
+    font-size:large;
+
+}
+
+[class$="-price"]{
+    font-size:x-large;
+    text-align:right;
+    width: 100%;
 }

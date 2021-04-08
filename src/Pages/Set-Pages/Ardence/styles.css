@@ -1,36 +1,37 @@
 
 .ardence-pageWrap {
    
-    --ardPrimary:#fd6326 ;
-    --ardSecondary: #c2ccd4;
+    --ardPrimary:#fec300 ;
+    --ardSecondary: #006dc7;
     --ardTertiary: #d2e4ed;
     --ardAccent: #fdc2ca;
-    --ardBackground: #fec300;
+    --ardText: #fd6326;
+    /*  */
 }
 
 .ardence-headWrap {
-    color: var(--ardSecondary);
+    color: var(--ardText);
 }
 
 
 .ardence-collDescription::before {
     top: -2px;
     left: -2px;
-    border-top: 3px solid var(--ardTertiary) ;
-    border-left: 3px solid var(--ardTertiary) ;
+    border-top: 3px solid var(--ardSecondary) ;
+    border-left: 3px solid var(--ardSecondary) ;
 }
 
 .ardence-collDescription::after {
     bottom: -2px;
     right: -2px;
-    border-bottom: 3px solid var(--ardTertiary);
-    border-right: 3px solid var(--ardTertiary);
+    border-bottom: 3px solid var(--ardSecondary);
+    border-right: 3px solid var(--ardSecondary);
 }
 
 .ardence-collSubTitle{
     border: 0px;
     border-bottom: 3px solid;
-    border-image: linear-gradient(to right, var(--ardBackground) 0%, var(--ardAccent) 50%, var(--ardBackground) 100%);
+    border-image: linear-gradient(to right, var(--ardPrimary) 0%, var(--ardAccent) 50%, var(--ardPrimary) 100%);
     border-image-slice: 1;
 }
 
@@ -39,15 +40,59 @@
     linear-gradient(
     to bottom, 
     var(--ardTertiary), 
-    var(--ardBackground)
+    var(--ardSecondary)
     ) 1 100%;
 }
 
 .ardence-backBtn{
-    color: var(--ardTertiary)
+    color: var(--ardText)
 }
 
 .ardence-backBtn:hover{
-    color: var(--ardBackground);
-    background-color:var(--ardTertiary);   
+    color: var(--ardTertiary);
+    background-color:var(--ardText);   
 }
+
+.ardence-cardWrap {
+
+}
+
+.ardence-cardImage{
+
+}
+
+.ardence-detailsWrap {
+
+}
+
+.ardence-cardTitle {
+
+}
+
+.ardence-blurb {
+
+}
+
+.ardence-blurb::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--ardAccent) ;
+    border-left: 3px solid var(--ardAccent) ;
+}
+
+.ardence-blurb::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--ardAccent);
+    border-right: 3px solid var(--ardAccent);
+}
+
+.ardence-category {
+
+}
+
+.ardence-price {
+
+}
+
+

@@ -4,11 +4,11 @@
     --modSecondary: #7eb8da;
     --modTertiary: #be9ddf;
     --modAccent: #ffa5d8;
-    --modBackground: #92ddea;
+    --modText: #004a57;
 }
 
 .modern-headWrap {
-    color: var(--modSecondary);
+    color: var(--modText);
 }
 
 
@@ -26,10 +26,10 @@
     border-right: 3px solid var(--modTertiary);
 }
 
-.modern-collSubTitle{
+.modern-collSubTitle {
     border: 0px;
     border-bottom: 3px solid;
-    border-image: linear-gradient(to right, var(--modBackground) 0%, var(--modAccent) 50%, var(--modBackground) 100%);
+    border-image: linear-gradient(to right, var(--modText) 0%, var(--modAccent) 50%, var(--modText) 100%);
     border-image-slice: 1;
 }
 
@@ -38,15 +38,58 @@
     linear-gradient(
     to bottom, 
     var(--modTertiary), 
-    var(--modBackground)
+    var(--modText)
     ) 1 100%;
 }
 
-.modern-backBtn{
-    color: var(--modTertiary)
+.modern-backBtn {
+    color: var(--modText)
 }
 
-.modern-backBtn:hover{
-    color: var(--modBackground);
-    background-color:var(--modTertiary);   
+.modern-backBtn:hover {
+    color: var(--modAccent);
+    background-color:var(--modText);   
 }
+
+.modern-cardWrap {
+
+}
+
+.modern-cardImage{
+
+}
+
+.modern-detailsWrap {
+
+}
+
+.modern-cardTitle {
+
+}
+
+.modern-blurb {
+
+}
+
+.modern-blurb::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--modAccent) ;
+    border-left: 3px solid var(--modAccent) ;
+}
+
+.modern-blurb::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--modAccent);
+    border-right: 3px solid var(--modAccent);
+}
+
+.modern-category {
+
+}
+
+.modern-price {
+
+}
+

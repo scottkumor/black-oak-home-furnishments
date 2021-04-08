@@ -55,7 +55,7 @@ export default class Executive extends Component {
                             image={item.image}
                             category={item.category}
                             type={item.type}
-                        // description={item.description} short desc
+                            blurb={item.blurb}
                         // link={item.link} link to its own modal? page?
                         // icon={item.icon} icon based on category
                         />
