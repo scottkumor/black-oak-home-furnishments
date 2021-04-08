@@ -5,11 +5,11 @@
     --ascSecondary: #c2ccd4;
     --ascTertiary: #8c8b79;
     --ascAccent: #1db7cf;
-    --ascBackground: #7aa667;
+    --ascText: #215f07;
 }
 
 .ascendance-headWrap {
-    color: var(--ascSecondary);
+    color: var(--ascText);
 }
 
 
@@ -30,7 +30,7 @@
 .ascendance-collSubTitle{
     border: 0px;
     border-bottom: 3px solid;
-    border-image: linear-gradient(to right, var(--ascBackground) 0%, var(--ascAccent) 50%, var(--ascBackground) 100%);
+    border-image: linear-gradient(to right, var(--ascText) 0%, var(--ascAccent) 50%, var(--ascText) 100%);
     border-image-slice: 1;
 }
 
@@ -39,15 +39,58 @@
     linear-gradient(
     to bottom, 
     var(--ascTertiary), 
-    var(--ascBackground)
+    var(--ascText)
     ) 1 100%;
 }
 
 .ascendance-backBtn{
-    color: var(--ascTertiary)
+    color: var(--ascText)
 }
 
 .ascendance-backBtn:hover{
-    color: var(--ascBackground);
-    background-color:var(--ascTertiary);   
+    color: var(--ascAccent);
+    background-color:var(--ascText);   
 }
+
+.ascendance-cardWrap {
+
+}
+
+.ascendance-cardImage{
+
+}
+
+.ascendance-detailsWrap {
+
+}
+
+.ascendance-cardTitle {
+
+}
+
+.ascendance-blurb {
+
+}
+
+.ascendance-blurb::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--ascAccent) ;
+    border-left: 3px solid var(--ascAccent) ;
+}
+
+.ascendance-blurb::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--ascAccent);
+    border-right: 3px solid var(--ascAccent);
+}
+
+.ascendance-category {
+
+}
+
+.ascendance-price {
+
+}
+

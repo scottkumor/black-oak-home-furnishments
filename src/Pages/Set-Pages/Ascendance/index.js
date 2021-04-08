@@ -34,8 +34,9 @@ export default class Ascendance extends Component {
                     </div>
 
                     <p className={collection + "-collDescription"}>
-                        The Ascendance Collection has been elevated. Rise to meet its sleek designs and
-                        tasteful styles that will bring your comfort to new heights. 
+                        The Ascendance Collection has been elevated. Rising to meet its sleek designs and
+                        tasteful styles are clean lines and elegant shapes that will bring your comfort to new heights. 
+                        We'll let your home achieve the ultimate altitude of interior fashion for not so lofty prices.
                     </p>
 
                     <div className={collection + "-collSubTitle"}>
@@ -54,7 +55,7 @@ export default class Ascendance extends Component {
                             image={item.image}
                             category={item.category}
                             type={item.type}
-                        // description={item.description} short desc
+                            blurb={item.blurb}
                         // link={item.link} link to its own modal? page?
                         // icon={item.icon} icon based on category
                         />

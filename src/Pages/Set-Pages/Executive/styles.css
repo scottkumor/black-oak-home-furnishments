@@ -5,7 +5,7 @@
     --execSecondary: #4a0001;
     --execTertiary: #cf0600;
     --execAccent: #ff8901;
-    --execBackground: #fff700;
+    --execText: #fff700;
 }
 
 .executive-headWrap {
@@ -30,7 +30,7 @@
 .executive-collSubTitle{
     border: 0px;
     border-bottom: 3px solid;
-    border-image: linear-gradient(to right, var(--execBackground) 0%, var(--execAccent) 50%, var(--execBackground) 100%);
+    border-image: linear-gradient(to right, var(--execText) 0%, var(--execAccent) 50%, var(--execText) 100%);
     border-image-slice: 1;
 }
 
@@ -39,7 +39,7 @@
     linear-gradient(
     to bottom, 
     var(--execTertiary), 
-    var(--execBackground)
+    var(--execText)
     ) 1 100%;
 }
 
@@ -48,7 +48,49 @@
 }
 
 .executive-backBtn:hover{
-    color: var(--execBackground);
+    color: var(--execText);
     background-color:var(--execAccent);   
+}
+
+.executive-cardWrap {
+
+}
+
+.executive-cardImage{
+
+}
+
+.executive-detailsWrap {
+
+}
+
+.executive-cardTitle {
+
+}
+
+.executive-blurb {
+
+}
+
+.executive-blurb::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--execAccent) ;
+    border-left: 3px solid var(--execAccent) ;
+}
+
+.executive-blurb::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--execAccent);
+    border-right: 3px solid var(--execAccent);
+}
+
+.executive-category {
+
+}
+
+.executive-price {
+
 }
 
