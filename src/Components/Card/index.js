@@ -6,7 +6,8 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 export default function Card(props) {
 
-    // trim the ' collection' part of the stringoff the end of the string so it can be used for unique classes
+    // trim the ' collection' part of the string off the end so it can be used for unique classes.
+    // triggers when split method sees a space and cuts off everything else startting at the 0 position
     let collection = props.collection.split(' ')[0];
 
     return (
