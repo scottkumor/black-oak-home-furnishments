@@ -1,27 +1,56 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
-
 import "./styles.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faShoppingCart, faWindowClose, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-//import Cart from './../../Components/Cart/index';
+import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import Cart from './../Cart/index';
+import Menu from './../Menu/index';
+
 
 export default class NavBar extends Component {
-  state = {
-    toggle: false
+ 
+  
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggle: false,
+      menu: false
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleMenu = this.handleMenu.bind(this);
+
+
   }
+
   Toggle = () => {
     this.setState({ toggle: !this.state.toggle })
   }
 
+  MenuToggle = () => {
+    this.setState({ menu: !this.state.menu })
+  }
+    
+    
+  handleClick() {
+    this.setState(state => ({
+      toggle: !state.toggle
+    }))
+  }
+
+  handleMenu() {
+
+    this.setState(state => ({
+      menu: !state.menu
+    }))
+    
+  }
+
+
   render() {
-    var colStyle = {
-      display: "flex",
-      flexDirection: "column",
-      alignItems:"center",
-      textDecoration:"none",
-      color:"black"
-    }
+    
+    // console.log(this.state)
 
     // const cartBtn  = document.querySelector('.cart-btn');
     // const clearcartBtn  = document.querySelector('.clear-cart');
@@ -69,68 +98,44 @@ export default class NavBar extends Component {
     // })
 
 
-
-
-
-
-
-
-
     return (
       <>
         <nav className="navbar">
           <div className="navbar-center">
-            <span className="nav-icon">
-              {/* <FontAwesomeIcon icon={faHome}/> */}
-              <FontAwesomeIcon icon={faBars} />
-
-            </span>
+          <div className="menu-btn">
+              <span className="nav-icon">
+                <FontAwesomeIcon 
+                  icon={faBars} 
+                  onClick={this.handleMenu}
+                />
+              </span>
+            </div>
             {/* <img src="./../../images/logo.svg" alt="store logo" /> */}
-            <Link to="/" style={colStyle}>
+            <Link to="/">
               <div> Black Oak </div>
               <div>Home Furnishments</div>
             </Link>
             <div className="cart-btn">
               <span className="nav-icon">
-                <FontAwesomeIcon icon={faShoppingCart} onClick={this.Toggle}
+                <FontAwesomeIcon 
+                  icon={faShoppingCart} 
+                  onClick={this.handleClick}
                 />
               </span>
-              <div className="cart-items">0</div>
+              <div className="cart-items">1</div>
             </div>
           </div>
         </nav>
 
-        {/* begin cart */}
-        <div className={this.state.toggle ? "cart-overlay cart-overlay-show" : "cart-overlay cart-overlay-hide"}>
-          <div className={this.state.toggle ? "showCart cart" : "cart"}>
-            <span className="close-cart" onClick={this.Toggle}>
-              <FontAwesomeIcon icon={faWindowClose} />
-            </span>
-            <h2>Your Cart</h2>
-            <div className="cart-content">
-              <div className="cart-item">
-                <img src="./../../images/product-1.jpeg" alt="cart item" />
-                <div>
-                  <h4> queen bed </h4>
-                  <h5> $1000 </h5>
-                  <span className="remove-item">remove</span>
-                </div>
-                <div>
-                  <FontAwesomeIcon icon={faChevronUp} />
-                  <p className="item-amount">1</p>
-                  <FontAwesomeIcon icon={faChevronDown} />
-                </div>
-              </div>
-            </div>
-            <div className="cart-footer">
-              <h3> your total: $
-                <span className="class-total">1000</span>
-              </h3>
-              <button className="clear-cart banner-btn"> clear cart</button>
-            </div>
-          </div>
-        </div>
-        {/* end cart */}
+        <Menu 
+          menu={this.state.menu}
+          handleMenu={this.handleMenu}
+        />
+        <Cart 
+          toggle={this.state.toggle}
+          handleClick={this.handleClick}
+        />
+        
 
       </>
     );

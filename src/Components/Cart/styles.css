@@ -8,7 +8,7 @@
   transition: var(--mainTransition);
   background: rgb(240, 157, 81, 0.5);
   z-index: 2;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 .cart {
   position: fixed;
@@ -29,17 +29,17 @@
 .transparentBcg {
   visibility: visible;
 }
-@media screen and (min-width: 768px) {
-  .cart {
-    width: 30vw;
-    min-width: 450px;
-  }
-}
 
 .close-cart {
-  font-size: 1.7rem;
   cursor: pointer;
+  transition: var(--mainTransition);
+
 }
+
+.close-cart:hover{
+  color:rgb(240, 157, 81, 0.5);
+}
+
 .cart h2 {
   text-transform: capitalize;
   text-align: center;
@@ -91,4 +91,11 @@
   margin-bottom: 1rem;
 }
 
+
+@media screen and (min-width: 768px) {
+  .cart {
+    width: 30vw;
+    min-width: 450px;
+  }
+}
 /* --------------- End of Cart ---------------- */
