@@ -40,15 +40,17 @@ export default class NavBar extends Component {
   }
 
   handleMenu() {
+
     this.setState(state => ({
       menu: !state.menu
     }))
+    
   }
 
 
   render() {
     
-    console.log(this.state)
+    // console.log(this.state)
 
     // const cartBtn  = document.querySelector('.cart-btn');
     // const clearcartBtn  = document.querySelector('.clear-cart');
