@@ -16,10 +16,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
           <NavBar />
-        </header>
-      </div>
+        
+     
 
      <Switch>
      <Route path="/collections">
@@ -45,7 +44,9 @@ function App() {
        <Home />
      </Route>
    </Switch>
+   </div>
    </Router>
+   
   );
 }
 

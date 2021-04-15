@@ -6,19 +6,24 @@ import { faWindowClose, faChevronUp, faChevronDown } from "@fortawesome/free-sol
 export default class Cart extends Component {
 
   // pull from local storage here and place into queen bed placeholder
-  // click on overlay to close cart too
+  // create cart-items component, use it as a dynamic props template like Product and Card
+  
+  /* see Menu component index for explanation on ternary onClicks and stopProps */
 
   render() {
-    
+
     return (
 
-      <div className={this.props.toggle ? "cart-overlay cart-overlay-show" : "cart-overlay cart-overlay-hide"}>
-        <div className={this.props.toggle ? "showCart cart" : "cart"}>
-          <span className="close-cart" onClick={this.props.handleClick}>
-            <FontAwesomeIcon className="close" size="2x" icon={faWindowClose} />
+      <div
+        className={this.props.cart ? "cart-overlay cart-overlay-show" : "cart-overlay cart-overlay-hide"}
+        onClick={this.props.cart ? this.props.handleCart : null}
+      >
+        <div className={this.props.cart ? "showCart cart" : "cart"} onClick={e => e.stopPropagation()}>
+          <span className="close-cart" onClick={e => e.stopPropagation()}>
+            <FontAwesomeIcon className="close" onClick={this.props.handleCart} size="4x" icon={faWindowClose} />
+            <h1 className="cart-header">Your Cart</h1>
           </span>
-          <h2>Your Cart</h2>
-          <div className="cart-content">
+          <div className="cart-content" onClick={e => e.stopPropagation()}>
             <div className="cart-item">
               <img src="./../../images/product-1.jpeg" alt="cart item" />
               <div>
@@ -37,7 +42,7 @@ export default class Cart extends Component {
             <h3> your total: $
                 <span className="class-total">1000</span>
             </h3>
-            <button className="clear-cart banner-btn"> clear cart</button>
+            <button className="clear-cart banner-btn"> clear cart </button>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
@@ -8,49 +8,60 @@ import Menu from './../Menu/index';
 
 
 export default class NavBar extends Component {
- 
-  
+
+
 
   constructor(props) {
     super(props);
     this.state = {
-      toggle: false,
+      cart: false,
       menu: false
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleCart = this.handleCart.bind(this);
     this.handleMenu = this.handleMenu.bind(this);
 
-
   }
 
-  Toggle = () => {
-    this.setState({ toggle: !this.state.toggle })
-  }
 
-  MenuToggle = () => {
-    this.setState({ menu: !this.state.menu })
-  }
-    
-    
-  handleClick() {
+  handleCart() {
     this.setState(state => ({
-      toggle: !state.toggle
-    }))
+      cart: !state.cart
+    }));
+
+    if (this.state.cart === false) {
+      this.disableScrolling()
+    }
+    else {
+      this.enableScrolling()
+    }
   }
 
   handleMenu() {
-
     this.setState(state => ({
       menu: !state.menu
     }))
-    
+    if (this.state.menu === false) {
+      this.disableScrolling()
+    }
+    else {
+      this.enableScrolling()
+    }
+  }
+
+  disableScrolling() {
+    var x = window.scrollX;
+    var y = window.scrollY;
+    window.onscroll = function () { window.scrollTo(x, y); };
+  }
+
+  enableScrolling() {
+    window.onscroll = null;
   }
 
 
   render() {
-    
-    // console.log(this.state)
+
 
     // const cartBtn  = document.querySelector('.cart-btn');
     // const clearcartBtn  = document.querySelector('.clear-cart');
@@ -102,10 +113,11 @@ export default class NavBar extends Component {
       <>
         <nav className="navbar">
           <div className="navbar-center">
-          <div className="menu-btn">
+            <div className="menu-btn">
               <span className="nav-icon">
-                <FontAwesomeIcon 
-                  icon={faBars} 
+                <FontAwesomeIcon
+                  icon={faBars}
+                  size="2x"
                   onClick={this.handleMenu}
                 />
               </span>
@@ -116,27 +128,25 @@ export default class NavBar extends Component {
               <div>Home Furnishments</div>
             </Link>
             <div className="cart-btn">
-              <span className="nav-icon">
-                <FontAwesomeIcon 
-                  icon={faShoppingCart} 
-                  onClick={this.handleClick}
+              <span className="nav-icon" onClick={this.handleCart}>
+                <FontAwesomeIcon
+                  icon={faShoppingCart}
+                  size="2x"
                 />
+                <div className="cart-items">1</div>
               </span>
-              <div className="cart-items">1</div>
             </div>
           </div>
         </nav>
 
-        <Menu 
+        <Menu
           menu={this.state.menu}
           handleMenu={this.handleMenu}
         />
-        <Cart 
-          toggle={this.state.toggle}
-          handleClick={this.handleClick}
+        <Cart
+          cart={this.state.cart}
+          handleCart={this.handleCart}
         />
-        
-
       </>
     );
   }
