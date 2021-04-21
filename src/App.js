@@ -7,7 +7,7 @@ import Ardence from './Pages/Set-Pages/Ardence/index'
 import Ascendance from './Pages/Set-Pages/Ascendance/index'
 import NavBar from './Components/Navigation-Bar/index'
 import Collections from './Pages/Collections Page/index'
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './main.css';
 
 
@@ -16,37 +16,35 @@ function App() {
   return (
     <Router>
       <div className="App">
-          <NavBar />
+        <NavBar />
         
-     
+        <Switch>
+          <Route path="/collections">
+            <Collections />
+          </Route>
+          <Route path="/all">
+            <All />
+          </Route>
+          <Route path="/executive collection">
+            <Executive />
+          </Route>
+          <Route path="/modern collection">
+            <Modern />
+          </Route>
+          <Route path="/ardence collection">
+            <Ardence />
+          </Route>
+          <Route path="/ascendance collection">
+            <Ascendance />
+          </Route>
 
-     <Switch>
-     <Route path="/collections">
-       <Collections />
-     </Route>
-     <Route path="/all">
-       <All />
-     </Route>
-     <Route path="/executive collection">
-       <Executive />
-     </Route>
-     <Route path="/modern collection">
-       <Modern />
-     </Route>
-     <Route path="/ardence collection">
-       <Ardence />
-     </Route>
-     <Route path="/ascendance collection">
-       <Ascendance />
-     </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
 
-     <Route path="/">
-       <Home />
-     </Route>
-   </Switch>
-   </div>
-   </Router>
-   
   );
 }
 
