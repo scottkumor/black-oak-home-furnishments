@@ -7,9 +7,10 @@ import Cart from './../Cart/index';
 import Menu from './../Menu/index';
 
 
+
 export default class NavBar extends Component {
 
-
+// TO DO: total up cart items
 
   constructor(props) {
     super(props);

@@ -3,33 +3,56 @@ import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import CartItem from "./../../Components/Cart-Item/index"
-import ProductsDB from "../../products.json"
+//import ProductsDB from "../../products.json"
+import { cartHandler, cart, total } from "./../../CartHelpers.js"
 
-
-
-
-
-//the master cart
-let cart = [];
-
-// loop through localStorage, effectively the pre-processed cart, push all items as objects into the cart array. 
-// the products will be rendered based on a map function that will in turn render each product seperately
-for (var i=0; i < localStorage.length; i++) {
-  cart.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
-  //needs to update cart state
-}
-
-
-//console.log(cart)
 
 
 
 export default class Cart extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      myCart: []
+    }
+    this.getInitialCart = this.getInitialCart.bind(this);
+    this.clearCart = this.clearCart.bind(this);
 
+  }
+
+  getInitialCart() {
+    cartHandler();
+    this.setState({
+      myCart: cart
+    });
+  }
+
+
+  componentDidMount() {
+    this.getInitialCart();
+  }
+
+  clearCart() {
+    localStorage.clear();
+    cartHandler();
+    this.forceUpdate();
+
+    this.setState({
+      myCart: cart
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.state.myCart!==cart) {
+      this.setState({
+        myCart: cart
+      });
+    }
+  }
 
   render() {
-
+    
     return (
 
       <div
@@ -41,7 +64,7 @@ export default class Cart extends Component {
             <FontAwesomeIcon className="close" onClick={this.props.handleCart} size="4x" icon={faWindowClose} />
             <h1 className="cart-header">Your Cart</h1>
           </span>
-          <div className="cart-content" onClick={e => e.stopPropagation()}>
+          <div id="cart" className="cart-content" onClick={e => e.stopPropagation()}>
             {cart.map((item) => (
               <CartItem
                 id={item.id}
@@ -58,11 +81,16 @@ export default class Cart extends Component {
               />
             ))}
           </div>
-          <div className="cart-footer">
+          <div className="cart-footer" onClick={e => e.stopPropagation()}>
             <h3> your total: $
-                <span className="cl-total">1000</span>
+                <span id="total" className="cl-total">{total}</span>
             </h3>
-            <button className="clear-cart banner-btn"> clear cart </button>
+            <button
+              className="clear-cart banner-btn"
+              onClick={this.clearCart}
+            >
+              clear cart
+            </button>
           </div>
         </div>
       </div>
