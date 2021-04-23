@@ -60,7 +60,7 @@ function Product(props) {
                     <div className="modalDetails">
                         <h1>{props.price}</h1>
 
-                        <button className="modalCartBtn" data-id="1">
+                        <button onClick={() => addItemToCart(props.id)} className="modalCartBtn" data-id="1">
                             <FontAwesomeIcon icon={faCartPlus} />
                             <div> Add to Cart </div>
                         </button>

@@ -70,7 +70,7 @@ export default class Cart extends Component {
                 id={item.id}
                 key={item.id}
                 title={item.title}
-                price={"$" + item.price}
+                price={item.price}
                 image={item.image}
               //  category={item.category}
               //  collection={item.collection}

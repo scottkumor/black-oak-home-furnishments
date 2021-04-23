@@ -1,3 +1,4 @@
+import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
 import ProductsDB from "./products.json"
 
 //the master cart
@@ -58,7 +59,7 @@ function getTotal() {
                 return a + b;
             }, 0);
 
-            //rounding
+            //rounding to two decimal places
             total = sum.toFixed(2);
         }
     }
@@ -67,7 +68,43 @@ function getTotal() {
 
 
 
+export function chevronHandler(direction, originalPrice){
+   
+    let currCount = document.querySelector("#count").innerHTML;
+    let newPrice = 0
 
+
+    if(direction ==="up"){
+        
+        currCount++
+        document.querySelector("#count").innerHTML = currCount;
+        
+        newPrice = currCount * originalPrice;
+        document.querySelector("#price").innerHTML = "$"+ newPrice.toFixed(2);
+
+        getTotal();
+    }
+    if(direction ==="down" && currCount > 0){
+        
+        currCount--
+        document.querySelector("#count").innerHTML = currCount;
+
+        newPrice = currCount * originalPrice;
+        document.querySelector("#price").innerHTML = "$"+ newPrice.toFixed(2);
+
+        getTotal();
+    }
+
+    if (currCount <=0){
+        //logic to remove from local storage
+        console.log("remove");
+    }
+
+    else if (currCount === 1){
+        document.querySelector("#price").innerHTML = "$"+ originalPrice;
+    }
+
+}
 
 
 
