@@ -1,24 +1,113 @@
-import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
 import ProductsDB from "./products.json"
 
 //the master cart
-export let cart = [];
-let prices = [];
-export let total = 0;
+export let cart = [{ '1': 1 }, { '18': 4 }];
+
+
+let getter = localStorage.getItem('blackOaksUser');
 
 export function cartHandler() {
-    cart = [];
-    // loop through localStorage, effectively the pre-processed cart, push all items as objects into the cart array. 
-    // the products will be rendered based on a map function that will in turn render each product seperately
 
-    if (localStorage.length) {
-        for (var i = 0; i < localStorage.length; i++) {
+    // checks if the logged in user has a cart in LS, if not make one
+    if (!getter) { localStorage.setItem('blackOaksUser', JSON.stringify(cart)); }
 
-            cart.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+    else if (getter.length) {
+
+        // have to parse to get workable data, turns the string into an array of objects
+        let userCart = JSON.parse(getter)
+        //get the values stored in each object in the array
+        let pulledObjects = Object.values(userCart)
+        // id numbers corresponding to items in the DB
+        let toCheckIDs = [];
+        // pre-processed cart full of objects
+
+
+        /* 
+            loop through an array of my pulled Objects.
+            I need their IDs, but Object.keys creates a seperate array for each object's
+            key (located at index 0 for each one) so I need to not only cast it to an int 
+            but push it to a new array where it can be looped through and check in the DB. 
+            I then needed to pull up the associatedcount for this user's cart items and 
+            match them to the object, passing all that data down to the CartItem component 
+            so it can render the item correctly in the cart.            
+        */
+
+        for (let i = 0; i < pulledObjects.length; i++) {
+
+            toCheckIDs.push(parseInt(Object.keys(pulledObjects[i])[0]));
 
         }
+    
+
+        /* 
+            loop through an array of my pulled Objects.
+            I need their IDs, but Object.keys creates a seperate array for each object's
+            key (located at index 0 for each one) so I need to not only cast it to an int 
+            but push it to a new array where it can be looped through and check in the DB. 
+            I then needed to pull up the associatedcount for this user's cart items and 
+            match them to the object, passing all that data down to the CartItem component 
+            so it can render the item correctly in the cart.            
+        */
+
+        for(let j=0; j <  ProductsDB.length; j++){
+            
+            for (let k=0; k < toCheckIDs.length; k++){
+
+                if (ProductsDB[j].id === toCheckIDs[k]){
+                    
+                    console.log(ProductsDB[j]);
+
+                    /*
+                        the products will be rendered 
+                        based on a map function that will 
+                        in turn render each product seperately
+                    */
+
+                }
+            }
+        }
     }
-    getTotal();
+
+
+// TODO refactor add item to only append the values int eh LS entry with just an ID and count
+/*
+
+May need to use this
+ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+ 
+ */
+
+// -------------------REFACTOR ALL CODE BELOW THIS LINE---------------------------------------
+
+
+
+
+
+
+
+    //     if (localStorage.length && localStorage.getItem('USER')) {
+    //         for (var i = 0; i < localStorage.length; i++) {
+    //             // let itemToPush = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    //             // cart.push(itemToPush)
+
+    //         }
+
+    //         /*
+    //         storeInLocalStorage(item, keyAndvalue) {
+    //     var data = localStorage.getItem('item');
+
+    //     data = data ? JSON.parse(data) : [];
+
+    //     data.push(keyAndValue);
+
+    //     localStorage.setItem(item, JSON.stringify(data));
+    // }
+    //         */
+
+
+    //         getTotal();
+
+
 
 }
 
@@ -31,8 +120,17 @@ export default function addItemToCart(itemNum) {
 
         if (itemNum === ProductsDB[i].id) {
 
-            if (!localStorage.getItem(`${ProductsDB[i].title}`)) {
-                localStorage.setItem(`${ProductsDB[i].title}`, JSON.stringify(ProductsDB[i]));
+            let itemID = (ProductsDB[i].id).toString();
+
+            let countInit =
+            {
+                'id': itemID,
+                'count': 1
+            }
+
+
+            if (!localStorage.getItem(`${ProductsDB[i].id}`)) {
+                localStorage.setItem(`Username`, JSON.stringify(countInit));
                 cartHandler();
             }
             else {
@@ -44,75 +142,57 @@ export default function addItemToCart(itemNum) {
 }
 
 
-function getTotal() {
 
-    
+
+let prices = [];
+export let total = 0;
+
+export function getTotal() {
+
+    /*
+        TO DO assign counts to items coming in from cart, use math to first
+        multiply own item count by base price then push them to prices where
+        it will do its own summation
+    */
     total = 0;
     prices = [];
 
     if (cart.length) {
         for (var j = 0; j < cart.length; j++) {
-            prices.push(cart[j].price)
 
-            // Getting sum of prices
-            let sum = prices.reduce(function (a, b) {
-                return a + b;
-            }, 0);
+            console.log(cart[j])
 
-            //rounding to two decimal places
-            total = sum.toFixed(2);
+            // let basePrice = cart[j].price;
+            // console.log(basePrice);
+
+            // let calculatedPrice = basePrice * itemCount
+            // console.log(calculatedPrice);
+
+            // prices.push(calculatedPrice);
+
+
         }
+
+        //console.log(prices);
+
+        // Getting sum of prices
+        let sum = prices.reduce(function (a, b) {
+            return a + b;
+        }, 0);
+
+        //rounding to two decimal places
+        total = sum
+        console.log(total);
+
     }
-    else{total=0}
+    else {
+        total = 0
+    }
+    console.log('totaled')
 }
-
-
-
-export function chevronHandler(direction, originalPrice){
-   
-    let currCount = document.querySelector("#count").innerHTML;
-    let newPrice = 0
-
-
-    if(direction ==="up"){
-        
-        currCount++
-        document.querySelector("#count").innerHTML = currCount;
-        
-        newPrice = currCount * originalPrice;
-        document.querySelector("#price").innerHTML = "$"+ newPrice.toFixed(2);
-
-        getTotal();
-    }
-    if(direction ==="down" && currCount > 0){
-        
-        currCount--
-        document.querySelector("#count").innerHTML = currCount;
-
-        newPrice = currCount * originalPrice;
-        document.querySelector("#price").innerHTML = "$"+ newPrice.toFixed(2);
-
-        getTotal();
-    }
-
-    if (currCount <=0){
-        //logic to remove from local storage
-        console.log("remove");
-    }
-
-    else if (currCount === 1){
-        document.querySelector("#price").innerHTML = "$"+ originalPrice;
-    }
-
-}
-
-
-
-
-
-
-
-
+// function getTotal(){
+//     console.log('total test logger')
+// }
 
 
 

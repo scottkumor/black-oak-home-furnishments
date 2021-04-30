@@ -86,7 +86,7 @@
   margin: 0.5rem 0;
   letter-spacing: var(--mainSpacing);
 }
-.item-amount {
+#count {
   text-align: center;
 }
 .remove-item {

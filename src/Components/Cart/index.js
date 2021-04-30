@@ -65,13 +65,14 @@ export default class Cart extends Component {
             <h1 className="cart-header">Your Cart</h1>
           </span>
           <div id="cart" className="cart-content" onClick={e => e.stopPropagation()}>
-            {cart.map((item) => (
-              <CartItem
+            {/* {cart.map((item) => (
+              <CartItem 
                 id={item.id}
                 key={item.id}
                 title={item.title}
                 price={item.price}
                 image={item.image}
+                count={item.count}
               //  category={item.category}
               //  collection={item.collection}
               //  type={item.type}
@@ -79,7 +80,7 @@ export default class Cart extends Component {
               // link={item.link} link to its own modal? page?
               // icon={item.icon} icon based on category
               />
-            ))}
+            ))} */}
           </div>
           <div className="cart-footer" onClick={e => e.stopPropagation()}>
             <h3> your total: $
