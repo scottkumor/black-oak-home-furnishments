@@ -1,62 +1,53 @@
 import ProductsDB from "./products.json"
 
+
 //the master cart
-export let cart = [{ '1': 1 }, { '18': 4 }];
+//
+export let cart = [];
 
+let lsCart = localStorage.getItem('blackOaksUser') || [];
+//[{ '1': 1 }, { '18': 4 }]
+// localStorage.getItem('blackOaksUser');
 
-let getter = localStorage.getItem('blackOaksUser');
 
 export function cartHandler() {
 
-    // checks if the logged in user has a cart in LS, if not make one
-    if (!getter) { localStorage.setItem('blackOaksUser', JSON.stringify(cart)); }
+    // checks if the logged in user has a cart in LS, if not make one, set LS as empty array
+    if (!lsCart[0]) {
+        localStorage.setItem('blackOaksUser', "[]")
+    }
 
-    else if (getter.length) {
-
-        // have to parse to get workable data, turns the string into an array of objects
-        let userCart = JSON.parse(getter)
-        //get the values stored in each object in the array
-        let pulledObjects = Object.values(userCart)
-        // id numbers corresponding to items in the DB
-        let toCheckIDs = [];
-        // pre-processed cart full of objects
-
+    else
+    // if (lsCart.length) 
+    {
 
         /* 
-            loop through an array of my pulled Objects.
+            set up an empty array, push into it all IDs of items in lsCart.
             I need their IDs, but Object.keys creates a seperate array for each object's
             key (located at index 0 for each one) so I need to not only cast it to an int 
-            but push it to a new array where it can be looped through and check in the DB. 
+            but push it to my new array where it can be looped through and check in the DB. 
             I then needed to pull up the associatedcount for this user's cart items and 
             match them to the object, passing all that data down to the CartItem component 
             so it can render the item correctly in the cart.            
         */
+        cart = [];
+        let toCheckIDs = [];
+       let processor = JSON.parse(lsCart)
+        for (let i = 0; i < processor.length; i++) {
 
-        for (let i = 0; i < pulledObjects.length; i++) {
-
-            toCheckIDs.push(parseInt(Object.keys(pulledObjects[i])[0]));
+            toCheckIDs.push(parseInt(Object.keys(processor[i])[0]))
 
         }
-    
+        console.log(toCheckIDs)
 
-        /* 
-            loop through an array of my pulled Objects.
-            I need their IDs, but Object.keys creates a seperate array for each object's
-            key (located at index 0 for each one) so I need to not only cast it to an int 
-            but push it to a new array where it can be looped through and check in the DB. 
-            I then needed to pull up the associatedcount for this user's cart items and 
-            match them to the object, passing all that data down to the CartItem component 
-            so it can render the item correctly in the cart.            
-        */
+        for (let j = 0; j < ProductsDB.length; j++) {
 
-        for(let j=0; j <  ProductsDB.length; j++){
-            
-            for (let k=0; k < toCheckIDs.length; k++){
+            for (let k = 0; k < toCheckIDs.length; k++) {
 
-                if (ProductsDB[j].id === toCheckIDs[k]){
-                    
-                    console.log(ProductsDB[j]);
+                if (ProductsDB[j].id === toCheckIDs[k]) {
 
+                    cart.push(ProductsDB[j]);
+                    console.log("cart push")
                     /*
                         the products will be rendered 
                         based on a map function that will 
@@ -67,7 +58,65 @@ export function cartHandler() {
             }
         }
     }
+}
 
+// function that adds an item to local storage, sets the title as the key and object itself as the value.
+// if the key is not present, add it, but if it is present, iterate the items count in the cart instead.
+
+
+export default function addItemToCart(itemNum) {
+
+    let countInit =
+    {
+        [itemNum]: 1
+    }
+    //console.log(lsCart)
+
+    for (var i = 0; i < ProductsDB.length; i++) {
+
+        if (itemNum === ProductsDB[i].id && !lsCart.length) {
+
+            /* If lsCart comes in as an empty array, push this item into the array and put in LS */
+
+            lsCart.push(countInit)
+            // console.log(lsCart)
+            localStorage.setItem('blackOaksUser', JSON.stringify(lsCart))
+            // console.log(lsCart)
+            lsCart = localStorage.getItem('blackOaksUser')
+            // console.log(lsCart)
+
+        }
+
+        else if (itemNum === ProductsDB[i].id) {
+
+            // console.log(lsCart)
+            lsCart = JSON.parse(lsCart)
+            // console.log(lsCart)
+            lsCart.push(countInit)
+            // console.log(lsCart)
+            localStorage.setItem('blackOaksUser', JSON.stringify(lsCart))
+            lsCart = localStorage.getItem('blackOaksUser')
+            // console.log(lsCart)
+
+        }
+
+    }
+
+    cartHandler();
+
+}
+
+// function storeInLocalStorage(keyAndValue) {
+
+//     var data = localStorage.getItem('blackOaksUser');
+
+//     console.log(data)
+
+//     //data.push(keyAndValue);
+//     //console.log(data)
+
+//     //localStorage.setItem('blackOaksUser', JSON.stringify(data));
+// }
 
 // TODO refactor add item to only append the values int eh LS entry with just an ID and count
 /*
@@ -85,61 +134,22 @@ May need to use this
 
 
 
-    //     if (localStorage.length && localStorage.getItem('USER')) {
-    //         for (var i = 0; i < localStorage.length; i++) {
-    //             // let itemToPush = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    //             // cart.push(itemToPush)
+//     if (localStorage.length && localStorage.getItem('USER')) {
+//         for (var i = 0; i < localStorage.length; i++) {
+//             // let itemToPush = JSON.parse(localStorage.getItem(localStorage.key(i)))
+//             // cart.push(itemToPush)
 
-    //         }
+//         }
 
-    //         /*
-    //         storeInLocalStorage(item, keyAndvalue) {
-    //     var data = localStorage.getItem('item');
+//         /*
 
-    //     data = data ? JSON.parse(data) : [];
-
-    //     data.push(keyAndValue);
-
-    //     localStorage.setItem(item, JSON.stringify(data));
-    // }
-    //         */
+//         */
 
 
-    //         getTotal();
+//         getTotal();
 
 
 
-}
-
-
-// function that adds an item to local storage, sets the title as the key and object itself as the value.
-// if the key is not present, add it, but if it is present, iterate the items count in the cart instead.
-export default function addItemToCart(itemNum) {
-
-    for (var i = 0; i < ProductsDB.length; i++) {
-
-        if (itemNum === ProductsDB[i].id) {
-
-            let itemID = (ProductsDB[i].id).toString();
-
-            let countInit =
-            {
-                'id': itemID,
-                'count': 1
-            }
-
-
-            if (!localStorage.getItem(`${ProductsDB[i].id}`)) {
-                localStorage.setItem(`Username`, JSON.stringify(countInit));
-                cartHandler();
-            }
-            else {
-                console.log("add addition logic, item already in storage")
-            }
-        }
-
-    }
-}
 
 
 
