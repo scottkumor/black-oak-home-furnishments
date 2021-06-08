@@ -6,9 +6,6 @@ import CartItem from "./../../Components/Cart-Item/index"
 //import ProductsDB from "../../products.json"
 import { cartHandler, cart, total } from "./../../CartHelpers.js"
 
-
-
-
 export default class Cart extends Component {
 
   constructor(props) {
@@ -34,18 +31,16 @@ export default class Cart extends Component {
     this.getInitialCart();
   }
 
+
   clearCart() {
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.setItem('blackOaksUser', "[]");
+    cartHandler();
+
 
     this.setState({
       myCart: []
     });
-
-    localStorage.setItem('blackOaksUser', "[]");
-
-    cartHandler();
-
-    this.forceUpdate();
 
   }
 

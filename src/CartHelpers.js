@@ -1,24 +1,25 @@
 import ProductsDB from "./products.json"
 
 
-//the master cart
-//
+//the master cart to export to DOM
 export let cart = [];
 
-let lsCart = localStorage.getItem('blackOaksUser') || [];
-//[{ '1': 1 }, { '18': 4 }]
-// localStorage.getItem('blackOaksUser');
+// logged in user's working cart init
+let lsCart = localStorage.getItem('blackOaksUser')
 
 
+// function that handles cart operations
 export function cartHandler() {
+    
+    // makes sure we get the cart in its current state
+    lsCart = localStorage.getItem('blackOaksUser')
 
     // checks if the logged in user has a cart in LS, if not make one, set LS as empty array
-    if (!lsCart[0]) {
+    if (lsCart === '[]') {
         localStorage.setItem('blackOaksUser', "[]")
     }
 
-    else
-    // if (lsCart.length) 
+    else if (lsCart !== '[]') 
     {
 
         /* 
@@ -30,15 +31,15 @@ export function cartHandler() {
             match them to the object, passing all that data down to the CartItem component 
             so it can render the item correctly in the cart.            
         */
+        
         cart = [];
         let toCheckIDs = [];
-       let processor = JSON.parse(lsCart)
+        let processor = JSON.parse(lsCart)
         for (let i = 0; i < processor.length; i++) {
 
             toCheckIDs.push(parseInt(Object.keys(processor[i])[0]))
 
         }
-        console.log(toCheckIDs)
 
         for (let j = 0; j < ProductsDB.length; j++) {
 
@@ -47,7 +48,6 @@ export function cartHandler() {
                 if (ProductsDB[j].id === toCheckIDs[k]) {
 
                     cart.push(ProductsDB[j]);
-                    console.log("cart push")
                     /*
                         the products will be rendered 
                         based on a map function that will 
@@ -58,6 +58,8 @@ export function cartHandler() {
             }
         }
     }
+
+    getTotal();
 }
 
 // function that adds an item to local storage, sets the title as the key and object itself as the value.
@@ -70,7 +72,6 @@ export default function addItemToCart(itemNum) {
     {
         [itemNum]: 1
     }
-    //console.log(lsCart)
 
     for (var i = 0; i < ProductsDB.length; i++) {
 
@@ -79,24 +80,20 @@ export default function addItemToCart(itemNum) {
             /* If lsCart comes in as an empty array, push this item into the array and put in LS */
 
             lsCart.push(countInit)
-            // console.log(lsCart)
             localStorage.setItem('blackOaksUser', JSON.stringify(lsCart))
-            // console.log(lsCart)
             lsCart = localStorage.getItem('blackOaksUser')
-            // console.log(lsCart)
 
         }
 
         else if (itemNum === ProductsDB[i].id) {
 
-            // console.log(lsCart)
             lsCart = JSON.parse(lsCart)
-            // console.log(lsCart)
+            
             lsCart.push(countInit)
-            // console.log(lsCart)
+
             localStorage.setItem('blackOaksUser', JSON.stringify(lsCart))
+
             lsCart = localStorage.getItem('blackOaksUser')
-            // console.log(lsCart)
 
         }
 
@@ -106,108 +103,51 @@ export default function addItemToCart(itemNum) {
 
 }
 
-// function storeInLocalStorage(keyAndValue) {
-
-//     var data = localStorage.getItem('blackOaksUser');
-
-//     console.log(data)
-
-//     //data.push(keyAndValue);
-//     //console.log(data)
-
-//     //localStorage.setItem('blackOaksUser', JSON.stringify(data));
-// }
-
-// TODO refactor add item to only append the values int eh LS entry with just an ID and count
-/*
-
-May need to use this
- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
- 
- */
-
-// -------------------REFACTOR ALL CODE BELOW THIS LINE---------------------------------------
 
 
-
-
-
-
-
-//     if (localStorage.length && localStorage.getItem('USER')) {
-//         for (var i = 0; i < localStorage.length; i++) {
-//             // let itemToPush = JSON.parse(localStorage.getItem(localStorage.key(i)))
-//             // cart.push(itemToPush)
-
-//         }
-
-//         /*
-
-//         */
-
-
-//         getTotal();
-
-
-
-
-
-
-
-let prices = [];
+// master total to export to DOM
 export let total = 0;
 
 export function getTotal() {
 
-    /*
-        TO DO assign counts to items coming in from cart, use math to first
-        multiply own item count by base price then push them to prices where
-        it will do its own summation
-    */
-    total = 0;
-    prices = [];
+    //set prices to empty array to ensure accurate totaling
+    let prices = [];
 
-    if (cart.length) {
-        for (var j = 0; j < cart.length; j++) {
+    // get the products DB so we can check price on ID pulled from local lsCart
+    let  currCart = JSON.parse(lsCart)
 
-            console.log(cart[j])
+    /* 
+        loop through the current cart with the goal of multiplying the product's
+        price and its quantity in the cart. Used the same code above in cartHandler
+        to check the ID of the product in the lsCart that the j loop condition meets.
+        once it finds the ID, it is set as the new prodPrice  and is 
+        multiplied buy the current carts quantity pulled from the index of the current lsCart object.
+        All o fhtese are pushed as new prices to the exported prices array.
+    */ 
+    for (var i = 0; i < currCart.length; i++) {
+    
+        let prodPrice = 0;
 
-            // let basePrice = cart[j].price;
-            // console.log(basePrice);
-
-            // let calculatedPrice = basePrice * itemCount
-            // console.log(calculatedPrice);
-
-            // prices.push(calculatedPrice);
-
-
+        for (var j=0; j < ProductsDB.length; j++) {
+            if (parseInt(Object.keys(currCart[i])[0]) === ProductsDB[j].id) {
+                prodPrice = ProductsDB[j].price
+            }
         }
 
-        //console.log(prices);
-
-        // Getting sum of prices
-        let sum = prices.reduce(function (a, b) {
-            return a + b;
-        }, 0);
-
-        //rounding to two decimal places
-        total = sum
-        console.log(total);
-
+        let prodMath = (prodPrice) * (parseInt(Object.values(currCart[i])[0]))
+        prices.push(prodMath)
     }
-    else {
-        total = 0
-    }
-    console.log('totaled')
+
+     // use array.reduce to summate all prices in the prices array
+    let sum = prices.reduce(function (a, b) {
+        return a + b;
+    }, 0);
+
+    //rounding to two decimal places, then setting the total to be exported to the DOM
+    total = sum.toFixed(2);
+    
 }
-// function getTotal(){
-//     console.log('total test logger')
-// }
-
-
-
-
-
+// -------------------REFACTOR or DELETE ALL CODE BELOW THIS LINE---------------------------------------
 
 
 // yotube tutorial test code
