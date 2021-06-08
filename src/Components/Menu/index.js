@@ -12,7 +12,6 @@ export default class Menu extends Component {
         it can be globally accessed
     */
 
-
     /* 
         ternary handleMenu onClicks: when I added the onClick to close the menu and the overlay, the close button did not
         trigger the onClick when the close btn itself was clicked. by adding this conditional, I was able
@@ -24,7 +23,6 @@ export default class Menu extends Component {
         space is clicked or text is clicked. 
     
     */
-
 
     constructor(props) {
         super(props);
@@ -42,7 +40,6 @@ export default class Menu extends Component {
         }))
 
     }
-
 
     render() {
 
@@ -78,13 +75,13 @@ export default class Menu extends Component {
                         >
                             <Link to="/">
                                 Home
-                        </Link>
+                            </Link>
                             <Link to="/all">
                                 See All Products
-                        </Link>
+                            </Link>
                             <Link to="/collections">
                                 See All Collections
-                        </Link>
+                            </Link>
                         </div>
                         <div
                             className="dropdown-wrap"
@@ -120,7 +117,6 @@ export default class Menu extends Component {
                     </div>
                 </div>
             </div>
-
         );
     }
 }

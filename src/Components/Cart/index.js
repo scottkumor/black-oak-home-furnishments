@@ -1,43 +1,103 @@
 import React, { Component } from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose, faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import CartItem from "./../../Components/Cart-Item/index"
+//import ProductsDB from "../../products.json"
+import { cartHandler, cart, total } from "./../../CartHelpers.js"
+
+
+
 
 export default class Cart extends Component {
 
-  // pull from local storage here and place into queen bed placeholder
-  // click on overlay to close cart too
+  constructor(props) {
+    super(props);
+    this.state = {
+      myCart: []
+    }
+    this.getInitialCart = this.getInitialCart.bind(this);
+    this.clearCart = this.clearCart.bind(this);
+
+  }
+
+  getInitialCart() {
+    this.setState({
+      myCart: cart
+    });
+    cartHandler();
+
+  }
+
+
+  componentDidMount() {
+    this.getInitialCart();
+  }
+
+  clearCart() {
+    localStorage.clear();
+
+    this.setState({
+      myCart: []
+    });
+
+    localStorage.setItem('blackOaksUser', "[]");
+
+    cartHandler();
+
+    this.forceUpdate();
+
+  }
+
+  componentDidUpdate() {
+    if (this.state.myCart!==cart) {
+      this.setState({
+        myCart: cart
+      });
+    }
+  }
 
   render() {
     
     return (
 
-      <div className={this.props.toggle ? "cart-overlay cart-overlay-show" : "cart-overlay cart-overlay-hide"}>
-        <div className={this.props.toggle ? "showCart cart" : "cart"}>
-          <span className="close-cart" onClick={this.props.handleClick}>
-            <FontAwesomeIcon className="close" size="2x" icon={faWindowClose} />
+      <div
+        className={this.props.cart ? "cart-overlay cart-overlay-show" : "cart-overlay cart-overlay-hide"}
+        onClick={this.props.cart ? this.props.handleCart : null}
+      >
+        <div className={this.props.cart ? "showCart cart" : "cart"} onClick={e => e.stopPropagation()}>
+          <span className="close-cart" onClick={e => e.stopPropagation()}>
+            <FontAwesomeIcon className="close" onClick={this.props.handleCart} size="4x" icon={faWindowClose} />
+            <h1 className="cart-header">Your Cart</h1>
           </span>
-          <h2>Your Cart</h2>
-          <div className="cart-content">
-            <div className="cart-item">
-              <img src="./../../images/product-1.jpeg" alt="cart item" />
-              <div>
-                <h4> queen bed </h4>
-                <h5> $1000 </h5>
-                <span className="remove-item">remove</span>
-              </div>
-              <div>
-                <FontAwesomeIcon icon={faChevronUp} />
-                <p className="item-amount">1</p>
-                <FontAwesomeIcon icon={faChevronDown} />
-              </div>
-            </div>
+          <div id="cart" className="cart-content" onClick={e => e.stopPropagation()}>
+            {cart.map((item) => (
+              <CartItem 
+                id={item.id}
+                key={item.id}
+                title={item.title}
+                price={item.price}
+                image={item.image}
+                count={item.count}
+              //  category={item.category}
+              //  collection={item.collection}
+              //  type={item.type}
+              // description={item.description} short desc
+              // link={item.link} link to its own modal? page?
+              // icon={item.icon} icon based on category
+              />
+            ))}
           </div>
-          <div className="cart-footer">
+          <div className="cart-footer" onClick={e => e.stopPropagation()}>
             <h3> your total: $
-                <span className="class-total">1000</span>
+                <span id="total" className="cl-total">{total}</span>
             </h3>
-            <button className="clear-cart banner-btn"> clear cart</button>
+            <button
+              className="clear-cart banner-btn"
+              onClick={this.clearCart}
+            >
+              clear cart
+            </button>
           </div>
         </div>
       </div>
