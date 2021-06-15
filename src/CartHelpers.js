@@ -51,7 +51,7 @@ export function cartHandler() {
 
                 }
             }
-    }
+        }
 
     getTotal();
 }
@@ -97,16 +97,13 @@ export default function addItemToCart(itemNum) {
 
 }
 
-// export function clearWrapper(divID) {
-//     let wrapper = document.getElementById(divID)
-
-// }
 
 // master total to export to DOM
 export let total = 0;
 
 export function getTotal() {
 
+    console.log("totaling")
     //set prices to empty array to ensure accurate totaling
     let prices = [];
 
@@ -144,66 +141,3 @@ export function getTotal() {
     total = sum.toFixed(2);
 
 }
-// -------------------REFACTOR or DELETE ALL CODE BELOW THIS LINE---------------------------------------
-
-
-// yotube tutorial test code
-
-// const cartBtn  = document.querySelector('.cart-btn');
-// const clearcartBtn  = document.querySelector('.clear-cart');
-// const cartOverlay  = document.querySelector('.cart-overlay');
-// const cartItems  = document.querySelector('.cart-items');
-// const cartTotal  = document.querySelector('.cart-total');
-// const cartContent  = document.querySelector('.cart-content');
-// const cartDOM  = document.querySelector('.cart');
-
-// const productsDOM  = document.querySelector('.products-center');
-
-// console.log('typeof testObject: ' + typeof testObject);
-// console.log('testObject properties:');
-
-// for (var prop in testObject) {
-//   console.log('  ' + prop + ': ' + testObject[prop]);
-// }
-
-
-
-// cart.push(JSON.parse(retrievedObject1))
-// cart.push(JSON.parse(retrievedObject2))
-
-// console.log('typeof retrievedObject: ' + typeof retrievedObject);
-// console.log('Value of retrievedObject: ' + retrievedObject);
-
-
-//getting products pure JS not local DB
-// class Products {
-//   async getProducts(){
-//     try {
-//       let result = await fetch(ProductsDB);
-//       let data = await result.text();
-//       return data;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-// }
-
-//display products
-// class UI {
-
-// }
-
-//local storage
-// class Storage {
-
-// }
-
-// listener
-// document.addEventListener("DOMContentLoaded", ()=>{
-
-//   //const ui = new UI ()
-//   // const products = new Products ()
-
-//   //get all products
-//   // products.getProducts().then(data => console.log(data))
-// })
