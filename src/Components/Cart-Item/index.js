@@ -1,68 +1,76 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { getTotal } from "./../../CartHelpers.js"
-
-
-
-//TO DO persistent counts on refresh
-/* 
-    possibly create a pseudo login that saves the items and their count to local storage seperate from
-    the items themslves. when user coms back and they enter the same name, it loads a cart
-*/ 
-
-
+import { cartHandler
+    //, lsCart
+} from "./../../CartHelpers.js"
+//import ProductsDB from "./../../products.json"
 
 export default class CartItem extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             itemCount: 1,
-            price: this.props.price
+            price: this.props.price,
+            id: this.props.id
         }
 
         this.chevronHandler = this.chevronHandler.bind(this);
 
     }
 
-    chevronHandler = (direction, originalPrice, count) => () => {
+    chevronHandler = (direction, originalPrice) => () => {
 
-        count = this.state.itemCount;
-        let newPrice = 0
+        let count = this.state.itemCount;
+        let newPrice = 0;
+        let toCheckIDs = [];
+        let processor = JSON.parse(localStorage.getItem('blackOaksUser'));
 
-        if (direction === "up") {
+        if (direction === "up") { count++ };
 
-            count++
+        if (direction === "down" && count > 0) { count-- };
 
-            newPrice = (count * originalPrice).toFixed(2);
-
-            this.setState({
-                itemCount: count,
-                price: newPrice
-            });
-
-            getTotal();
-        }
-
-        if (direction === "down" && count > 0) {
-
-            count--
-
-            newPrice = (count * originalPrice).toFixed(2);
-
-            this.setState({
-                itemCount: count,
-                price: newPrice
-            });
-
-            getTotal();
-        }
+        //`````````````````````TO DO`````````````````````````````````````````````````
 
         if (count <= 0) {
             //logic to remove from local storage
             console.log("remove");
         }
+
+        //``````````````````````````````````````````````````````````````````````````
+
+        newPrice = parseFloat((count * originalPrice).toFixed(2));
+
+        for (let i = 0; i < processor.length; i++) {
+            toCheckIDs.push(parseInt(Object.keys(processor[i])[0]));
+        }
+
+        for (let j = 0; j < toCheckIDs.length; j++) {
+
+            if (this.state.id === toCheckIDs[j]) {
+
+                for (let k = 0; k < processor.length; k++) {
+
+                    if (parseInt(Object.keys(processor[k])[0]) === toCheckIDs[j]) {
+
+                        let currID = Object.keys(processor[k])[0];
+                        processor[k][currID] = count;
+
+                    }
+                }
+            }
+        }
+
+        localStorage.setItem('blackOaksUser', JSON.stringify(processor))
+
+        this.setState({
+            itemCount: count,
+            price: newPrice
+        });
+
+        cartHandler();
 
     }
 
@@ -79,9 +87,9 @@ export default class CartItem extends Component {
                     <span className="remove-item">remove</span>
                 </div>
                 <div className="wrap-two">
-                    <FontAwesomeIcon onClick={this.chevronHandler("up", this.props.price, this.props.count)} icon={faChevronUp} />
+                    <FontAwesomeIcon onClick={this.chevronHandler("up", this.props.price)} icon={faChevronUp} />
                     <p id="count" data-count={this.state.itemCount}> {this.state.itemCount} </p>
-                    <FontAwesomeIcon onClick={this.chevronHandler("down", this.props.price, this.props.count)} icon={faChevronDown} />
+                    <FontAwesomeIcon onClick={this.chevronHandler("down", this.props.price)} icon={faChevronDown} />
                 </div>
             </div>
 

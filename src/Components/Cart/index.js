@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import CartItem from "./../../Components/Cart-Item/index"
 //import ProductsDB from "../../products.json"
-import { cartHandler, cart, clearWrapper, total } from "./../../CartHelpers.js"
+import { cartHandler, cart, total } from "./../../CartHelpers.js"
 
 export default class Cart extends Component {
 
