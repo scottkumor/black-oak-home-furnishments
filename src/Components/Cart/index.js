@@ -33,23 +33,27 @@ export default class Cart extends Component {
 
 
   clearCart() {
-    //localStorage.clear();
-    localStorage.setItem('blackOaksUser', "[]");
-    cartHandler();
 
+    localStorage.clear();
+    localStorage.setItem('blackOaksUser', "[]");
+
+    cartHandler();
 
     this.setState({
       myCart: []
     });
 
+
   }
 
   componentDidUpdate() {
+    
     if (this.state.myCart!==cart) {
       this.setState({
         myCart: cart
       });
     }
+
   }
 
   render() {
