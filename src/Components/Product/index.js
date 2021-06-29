@@ -27,7 +27,7 @@ function Product(props) {
                         <FontAwesomeIcon icon={faCartPlus} />
                         <div> Add to Cart </div>
                     </button> */}
-                    <button onClick={() => addItemToCart(props.id)} className="bag-btn" data-id={props.id}>
+                    <button onClick={() => addItemToCart(props.id, "+", props.price)} className="bag-btn" data-id={props.id}>
                     <FontAwesomeIcon icon={faCartPlus} />
                         Add to Cart
                     </button>
@@ -60,7 +60,9 @@ function Product(props) {
                     <div className="modalDetails">
                         <h1>{props.price}</h1>
 
-                        <button onClick={() => addItemToCart(props.id)} className="modalCartBtn" data-id="1">
+                        <button onClick={() => addItemToCart(props.id, "+", props.price)} className="modalCartBtn" 
+                        //data-id="1"
+                        >
                             <FontAwesomeIcon icon={faCartPlus} />
                             <div> Add to Cart </div>
                         </button>
