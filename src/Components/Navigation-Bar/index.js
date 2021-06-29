@@ -15,9 +15,8 @@ export default class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cart: false,
-      menu: false,
-      cartCount: 0
+      cartView: false,
+      menu: false
     };
 
     this.handleCart = this.handleCart.bind(this);
@@ -28,10 +27,10 @@ export default class NavBar extends Component {
 
   handleCart() {
     this.setState(state => ({
-      cart: !state.cart
+      cartView: !state.cartView
     }));
 
-    if (this.state.cart === false) {
+    if (this.state.cartView === false) {
       this.disableScrolling()
     }
     else {
@@ -59,15 +58,6 @@ export default class NavBar extends Component {
 
   enableScrolling() {
     window.onscroll = null;
-  }
-
-  componentDidMount() {
-    let items = 0;
-    console.log(cart)
-    for (let i = 0; i < cart.length; i++){
-       items++ 
-    }
-    this.setState({cartCount: items}); 
   }
 
   render() {
@@ -108,7 +98,7 @@ export default class NavBar extends Component {
           handleMenu={this.handleMenu}
         />
         <Cart
-          cart={this.state.cart}
+          cartView={this.state.cartView}
           handleCart={this.handleCart}
         />
       </>

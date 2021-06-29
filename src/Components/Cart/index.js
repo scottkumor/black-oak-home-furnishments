@@ -62,10 +62,10 @@ export default class Cart extends Component {
     return (
 
       <div
-        className={this.props.cart ? "cart-overlay cart-overlay-show" : "cart-overlay cart-overlay-hide"}
-        onClick={this.props.cart ? this.props.handleCart : null}
+        className={this.props.cartView ? "cart-overlay cart-overlay-show" : "cart-overlay cart-overlay-hide"}
+        onClick={this.props.cartView ? this.props.handleCart : null}
       >
-        <div className={this.props.cart ? "showCart cart" : "cart"} onClick={e => e.stopPropagation()}>
+        <div className={this.props.cartView ? "showCart cart" : "cart"} onClick={e => e.stopPropagation()}>
           <span className="close-cart" onClick={e => e.stopPropagation()}>
             <FontAwesomeIcon className="close" onClick={this.props.handleCart} size="4x" icon={faWindowClose} />
             <h1 className="cart-header">Your Cart</h1>

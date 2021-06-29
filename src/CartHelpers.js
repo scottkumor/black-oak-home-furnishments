@@ -79,9 +79,9 @@ export function cartHandler() {
     items count in the cart instead. this will also look to see if the item will beremoved via button press or via
     the count hitting zero by running a seperate removing function.*/
 
-export default function itemHandler(itemNum, operation, price) {
+export default function itemHandler(itemNum, operation) {
 
-    //console.log(itemNum, operation, price)
+    console.log(itemNum, operation)
     let toCheckIDs = [];
     let processor = JSON.parse(lsCart) || [];
 
@@ -140,7 +140,7 @@ export default function itemHandler(itemNum, operation, price) {
                             let count = currCount + 1;
 
                             // using regex to ignore the dollar sign in mathmatical operations
-                            price = (count * parseFloat(price.replace(/\$/g, '')).toFixed(2));
+                            //price = (count * parseFloat(price.replace(/\$/g, '')).toFixed(2));
 
                             // sets the new 'count' variable overtop the matched item's current count at this iteration
                             processor[k][itemNum] = count;
@@ -198,7 +198,8 @@ export default function itemHandler(itemNum, operation, price) {
 
     toCheckIDs = [];
     processor = JSON.parse(lsCart) || [];
-    cartHandler();
+
+    return cartHandler();
 }
 
 // master total to export to DOM
@@ -210,30 +211,24 @@ export function getTotal() {
     //set prices and total to empty array and 0 respectively to ensure accurate totaling
     total = 0;
     let prices = [];
-    let processor = JSON.parse(lsCart);
-    let toCheckIDs = [];
+    let processor = cart;
 
     for (let i = 0; i < processor.length; i++) {
         
-        toCheckIDs.push(parseInt(Object.keys(processor[i])[0]))
-        
-    }
+        prices.push(parseFloat(processor[i].price * processor[i].count));
 
-    for (let j = 0; j < ProductsDB.length; j++) {
-        console.log('you need to fix the total, prices are being set in other functions')
     }
-
 
     // // use array.reduce to summate all prices in the prices array
-    // let sum = prices.reduce(function (a, b) {
-    //     return a + b;
-    // }, 0);
+    let sum = prices.reduce(function (a, b) {
+        return a + b;
+    }, 0);
 
     // //rounding to two decimal places, then setting the total to be exported to the DOM
-    // total = sum.toFixed(2);
+    total = sum.toFixed(2);
 
 
-    console.log(prices, total)
+    //console.log(prices, total)
 }
 
 export function itemRemover(id) {
@@ -265,8 +260,5 @@ export function itemRemover(id) {
     }
     localStorage.setItem('blackOaksUser', lsCart)
 
-
-    toCheckIDs = [];
-    processor = JSON.parse(lsCart) || [];
     return cartHandler();
-}
+} 

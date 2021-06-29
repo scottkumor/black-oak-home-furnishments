@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { Modal } from 'react-responsive-modal';
-import addItemToCart from "./../../CartHelpers.js"
+import itemHandler from "./../../CartHelpers.js"
 import 'react-responsive-modal/styles.css';
 import "./styles.css"
 
@@ -27,7 +27,7 @@ function Product(props) {
                         <FontAwesomeIcon icon={faCartPlus} />
                         <div> Add to Cart </div>
                     </button> */}
-                    <button onClick={() => addItemToCart(props.id, "+", props.price)} className="bag-btn" data-id={props.id}>
+                    <button onClick={() => itemHandler(props.id, "+")} className="bag-btn" data-id={props.id}>
                     <FontAwesomeIcon icon={faCartPlus} />
                         Add to Cart
                     </button>
@@ -60,7 +60,7 @@ function Product(props) {
                     <div className="modalDetails">
                         <h1>{props.price}</h1>
 
-                        <button onClick={() => addItemToCart(props.id, "+", props.price)} className="modalCartBtn" 
+                        <button onClick={() => itemHandler(props.id, "+")} className="modalCartBtn" 
                         //data-id="1"
                         >
                             <FontAwesomeIcon icon={faCartPlus} />

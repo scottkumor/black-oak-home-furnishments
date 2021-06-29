@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import itemHandler, {itemRemover } from "./../../CartHelpers.js"
-//import ProductsDB from "./../../products.json"
+import itemHandler from "./../../CartHelpers.js"
 
 export default class CartItem extends Component {
 
@@ -16,8 +15,6 @@ export default class CartItem extends Component {
         }
 
         this.chevronHandler = this.chevronHandler.bind(this);
-        this.removeItem = this.removeItem.bind(this);
-
 
     }
 
@@ -34,11 +31,10 @@ export default class CartItem extends Component {
             
         };
         
+
+        console.log(this.state);
     }
 
-    removeItem = (id) => () => {
-        return itemRemover(id);
-    }
     
 
     render() {
@@ -51,7 +47,7 @@ export default class CartItem extends Component {
                 <div className="wrap-one">
                     <h4> {this.props.title} </h4>
                     <h5 id="price" data-price={this.state.price}>${this.state.price} </h5>
-                    <span onClick={this.removeItem(this.props.id)} className="remove-item">remove</span>
+                    <span className="remove-item">remove</span>
                 </div>
                 <div className="wrap-two">
                     <FontAwesomeIcon onClick={this.chevronHandler(this.props.id, "+", this.props.price)} icon={faChevronUp} />
