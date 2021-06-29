@@ -22,6 +22,7 @@ export default class Cart extends Component {
     this.setState({
       myCart: cart
     });
+
     cartHandler();
 
   }
@@ -48,7 +49,7 @@ export default class Cart extends Component {
 
   componentDidUpdate() {
     
-    if (this.state.myCart!==cart) {
+    if (this.state.myCart !== cart) {
       this.setState({
         myCart: cart
       });

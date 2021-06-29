@@ -5,18 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Cart from './../Cart/index';
 import Menu from './../Menu/index';
+import { cart } from "./../../CartHelpers.js"
+
 
 
 
 export default class NavBar extends Component {
 
-// TO DO: total up cart items
-
   constructor(props) {
     super(props);
     this.state = {
       cart: false,
-      menu: false
+      menu: false,
+      cartCount: 0
     };
 
     this.handleCart = this.handleCart.bind(this);
@@ -60,6 +61,14 @@ export default class NavBar extends Component {
     window.onscroll = null;
   }
 
+  componentDidMount() {
+    let items = 0;
+    console.log(cart)
+    for (let i = 0; i < cart.length; i++){
+       items++ 
+    }
+    this.setState({cartCount: items}); 
+  }
 
   render() {
 
@@ -88,7 +97,7 @@ export default class NavBar extends Component {
                   icon={faShoppingCart}
                   size="2x"
                 />
-                <div className="cart-items">1</div>
+                <div className="cart-items">{this.state.cartCount}</div>
               </span>
             </div>
           </div>

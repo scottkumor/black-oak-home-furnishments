@@ -44,18 +44,18 @@ export function cartHandler() {
             if (ProductsDB[j].id === toCheckIDs[k]) {
 
                 for (let l = 0; l < processor.length; l++) {
-                    
-                    let currCount = parseInt(Object.values(processor[l])[0]);
-                    
-                    let calcPrice = parseFloat((ProductsDB[j].price*currCount).toFixed(2))
-                    
-                    ProductsDB[j].price = calcPrice;
 
-                    Object.assign(ProductsDB[j], { 
-                        count: currCount                    
+                    let currCount = parseInt(Object.values(processor[l])[0]);
+
+                    // let calcPrice = parseFloat((ProductsDB[j].price * currCount).toFixed(2))
+
+                    // ProductsDB[j].price = calcPrice;
+
+                    Object.assign(ProductsDB[j], {
+                        count: currCount
                     });
 
-                    console.log(ProductsDB[j].count)
+                    //console.log(ProductsDB[j].count)
 
 
                 }
@@ -66,7 +66,7 @@ export function cartHandler() {
                     in turn render each product seperately
                 */
                 cart.push(ProductsDB[j]);
-                console.log(cart)
+                //console.log(cart)
             }
         }
     }
@@ -81,7 +81,7 @@ export function cartHandler() {
 
 export default function itemHandler(itemNum, operation, price) {
 
-    console.log(itemNum, operation, price)
+    //console.log(itemNum, operation, price)
     let toCheckIDs = [];
     let processor = JSON.parse(lsCart) || [];
 
@@ -194,7 +194,7 @@ export default function itemHandler(itemNum, operation, price) {
     }
 
     localStorage.setItem('blackOaksUser', lsCart)
-    
+
 
     toCheckIDs = [];
     processor = JSON.parse(lsCart) || [];
@@ -206,20 +206,67 @@ export let total = 0;
 
 export function getTotal() {
 
-    //set prices to empty array to ensure accurate totaling
+
+    //set prices and total to empty array and 0 respectively to ensure accurate totaling
+    total = 0;
     let prices = [];
-    for(let i = 0; i < cart.length; i++){
-        prices.push(cart[i].price)
+    let processor = JSON.parse(lsCart);
+    let toCheckIDs = [];
+
+    for (let i = 0; i < processor.length; i++) {
+        
+        toCheckIDs.push(parseInt(Object.keys(processor[i])[0]))
+        
     }
-    console.log(prices)
-    
+
+    for (let j = 0; j < ProductsDB.length; j++) {
+        console.log('you need to fix the total, prices are being set in other functions')
+    }
+
 
     // // use array.reduce to summate all prices in the prices array
-    let sum = prices.reduce(function (a, b) {
-        return a + b;
-    }, 0);
+    // let sum = prices.reduce(function (a, b) {
+    //     return a + b;
+    // }, 0);
 
     // //rounding to two decimal places, then setting the total to be exported to the DOM
-    total = sum.toFixed(2);
+    // total = sum.toFixed(2);
 
+
+    console.log(prices, total)
+}
+
+export function itemRemover(id) {
+
+    let toCheckIDs = [];
+    let processor = JSON.parse(lsCart) || [];
+
+    for (let i = 0; i < processor.length; i++) {
+        toCheckIDs.push(parseInt(Object.keys(processor[i])[0]));
+    }
+
+    for (let j = 0; j < toCheckIDs.length; j++) {
+        if (id === toCheckIDs[j]) {
+            for (let k = 0; k < processor.length; k++) {
+                if (toCheckIDs[j] === parseInt(Object.keys(processor[k]))) {
+
+                    let currIndex = processor.indexOf(processor[k]);
+                    console.log(currIndex)
+
+                    processor.splice(currIndex, 1)
+
+                    console.log(processor);
+
+                    // re-stringify the parsed lsCart
+                    lsCart = JSON.stringify(processor)
+                }
+            }
+        }
+    }
+    localStorage.setItem('blackOaksUser', lsCart)
+
+
+    toCheckIDs = [];
+    processor = JSON.parse(lsCart) || [];
+    return cartHandler();
 }
