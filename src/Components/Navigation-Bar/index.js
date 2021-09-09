@@ -5,13 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Cart from './../Cart/index';
 import Menu from './../Menu/index';
-import { cart } from "./../../CartHelpers.js"
+import { cartHandler } from "./../../CartHelpers.js"
 
 
 
 
 export default class NavBar extends Component {
 
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +63,6 @@ export default class NavBar extends Component {
 
   render() {
 
-
     return (
       <>
         <nav className="navbar">
@@ -87,7 +87,7 @@ export default class NavBar extends Component {
                   icon={faShoppingCart}
                   size="2x"
                 />
-                <div className="cart-items">{this.state.cartCount}</div>
+                <div className="cart-items">{}</div>
               </span>
             </div>
           </div>

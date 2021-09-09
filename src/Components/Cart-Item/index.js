@@ -1,61 +1,53 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import itemHandler from "./../../CartHelpers.js"
+import itemHandler, { itemRemover } from "./../../CartHelpers"
 
-export default class CartItem extends Component {
 
-    constructor(props) {
-        super(props);
+export default function CartItem(props) {
 
-        this.state = {
-            itemCount: this.props.count,
-            price: this.props.price,
-            id: this.props.id
-        }
+    let itemCount = props.count;
 
-        this.chevronHandler = this.chevronHandler.bind(this);
+    const [counter, setCounter] = useState(itemCount);
+    let incrementCounter = () => setCounter(counter => counter + 1);
+    let decrementCounter = () => setCounter(counter => counter - 1);
 
-    }
+    useEffect(() => {
+        setCounter(itemCount)
+    }, [itemCount])
 
-    chevronHandler = (itemNum, operation, price) => () => {
 
+
+
+    function chevronHandler(itemNum, operation, price) {
+
+        console.log('handling chevron...')
         price = "$" + price;
 
         itemHandler(itemNum, operation, price);
 
-        if (operation === "+") {
-            this.setState({
-                itemCount: this.props.count
-            })
-            
-        };
-        
+        if (operation === "+") { incrementCounter() }
+        if (operation === "-") { decrementCounter() }
 
-        console.log(this.state);
+
     }
 
-    
+    return (
 
-    render() {
-
-
-        return (
-
-            <div className="cart-item" key={this.props.id}>
-                <img src={process.env.PUBLIC_URL + `${this.props.image}`} alt={this.props.title} className="" />
-                <div className="wrap-one">
-                    <h4> {this.props.title} </h4>
-                    <h5 id="price" data-price={this.state.price}>${this.state.price} </h5>
-                    <span className="remove-item">remove</span>
-                </div>
-                <div className="wrap-two">
-                    <FontAwesomeIcon onClick={this.chevronHandler(this.props.id, "+", this.props.price)} icon={faChevronUp} />
-                    <p id="count" data-count={this.state.itemCount}> {this.props.count} </p>
-                    <FontAwesomeIcon onClick={this.chevronHandler(this.props.id, "-", this.props.price)} icon={faChevronDown} />
-                </div>
+        <div className="cart-item" key={props.id}>
+            <img src={process.env.PUBLIC_URL + `${props.image}`} alt={props.title} className="" />
+            <div className="wrap-one">
+                <h4> {props.title} </h4>
+                <h5 id="price" data-price={props.price}>${props.price} </h5>
+                <span className="remove-item">remove</span>
             </div>
+            <div className="wrap-two" onChange={props.onChange}>
+                <FontAwesomeIcon onClick={() => chevronHandler(props.id, "+", props.price)} icon={faChevronUp} />
+                <p id="count" >{counter} </p>
+                <FontAwesomeIcon onClick={() => chevronHandler(props.id, "-", props.price)} icon={faChevronDown} />
+            </div>
+        </div>
 
-        )
-    }
+    )
+
 }
