@@ -1,77 +1,89 @@
 import ProductsDB from "./products.json"
-
+//import getTotal from './Components/Cart'
 
 //the master cart to export to DOM
 export let cart = [];
 
-// logged in user's working cart init
-let lsCart = localStorage.getItem('blackOaksUser') || '[]';
+// logged in user's working cart 
+export let lsCart = localStorage.getItem('blackOaksUser') || '[]';
 
 // function that handles cart operations
 export function cartHandler() {
 
+    //console.log('handling cart')
+
+
     // makes sure we get the cart in its current state
     lsCart = localStorage.getItem('blackOaksUser')
+    
+    //console.log(cart)
+
 
     // checks if the logged in user has a cart in LS, if not make one, set LS as empty array
-    if (lsCart === '[]') {
+    if (lsCart === '[]' 
+    //|| !lsCart
+    ) {
         localStorage.setItem('blackOaksUser', "[]")
+        //console.log('handled empty cart')
     }
-    /* 
-        after setting up an empty array, push into it all IDs of items in lsCart.
+
+    /*  after setting up an empty array, push into it all IDs of items in lsCart.
         I need their IDs, but Object.keys creates a seperate array for each object's
         key (located at index 0 for each one) so I need to not only cast it to an int 
         but push it to my new array where it can be looped through and check in the DB. 
         I then needed to pull up the associatedcount for this user's cart items and 
         match them to the object, passing all that data down to the CartItem component 
-        so it can render the item correctly in the cart.            
-    */
+        so it can render the item correctly in the cart.*/         
+    
 
-    cart = [];
-    let toCheckIDs = [];
-    let processor = JSON.parse(lsCart) || [];
+    else if (lsCart !== '[]') {
 
-    for (let i = 0; i < processor.length; i++) {
+        //console.log('handling existing cart')
+        cart = [];
+        let toCheckIDs = [];
+        let processor = JSON.parse(lsCart) || [];
 
-        toCheckIDs.push(parseInt(Object.keys(processor[i])[0]))
+        for (let i = 0; i < processor.length; i++) {
 
-    }
+            toCheckIDs.push(parseInt(Object.keys(processor[i])[0]))
 
-    for (let j = 0; j < ProductsDB.length; j++) {
+        }
 
-        for (let k = 0; k < toCheckIDs.length; k++) {
+        for (let j = 0; j < ProductsDB.length; j++) {
 
-            if (ProductsDB[j].id === toCheckIDs[k]) {
+            for (let k = 0; k < toCheckIDs.length; k++) {
 
-                for (let l = 0; l < processor.length; l++) {
-
-                    let currCount = parseInt(Object.values(processor[l])[0]);
-
-                    // let calcPrice = parseFloat((ProductsDB[j].price * currCount).toFixed(2))
-
-                    // ProductsDB[j].price = calcPrice;
-
-                    Object.assign(ProductsDB[j], {
-                        count: currCount
-                    });
-
-                    //console.log(ProductsDB[j].count)
+                if (ProductsDB[j].id === toCheckIDs[k]) {
 
 
+                    /*
+                        the products will be rendered 
+                        based on a map function that will 
+                        in turn render each product seperately
+                    */
+                    cart.push(ProductsDB[j]);
                 }
+            }
+        }
+        // begin assigning the values of the item counts to the objects in the cart, essentially combining the two
+        for (let i = 0; i < cart.length; i++) {
 
-                /*
-                    the products will be rendered 
-                    based on a map function that will 
-                    in turn render each product seperately
-                */
-                cart.push(ProductsDB[j]);
-                //console.log(cart)
+
+
+            for (let j = 0; j < processor.length; j++) {
+
+
+                if (cart[i].id === parseInt(Object.keys(processor[j]))) {
+
+
+
+                    Object.assign(cart[i], {
+                        counter: parseInt(Object.values(processor[j]))
+                    });
+                }
             }
         }
     }
-
-    getTotal();
 }
 
 /* function that adds or subtracts an item to local storage, sets the ID as the key and countof the objects in the cart
@@ -81,107 +93,112 @@ export function cartHandler() {
 
 export default function itemHandler(itemNum, operation) {
 
-    console.log(itemNum, operation)
+
     let toCheckIDs = [];
     let processor = JSON.parse(lsCart) || [];
 
-    if (operation === "+") {
+    /* if there is nothing in the cart at all, create a new Object.*/
+    if (!processor[0]) {
 
-        /* if there is nothing in the cart at all, create a new Object.*/
-        if (!processor[0]) {
+        let count = 1;
+        const countInit = { [itemNum]: count }
 
-            let count = 1;
-            const countInit = { [itemNum]: count }
+        for (var i = 0; i < ProductsDB.length; i++) {
 
-            for (var i = 0; i < ProductsDB.length; i++) {
+            if (itemNum === ProductsDB[i].id) {
+                lsCart = JSON.parse(lsCart)
 
-                if (itemNum === ProductsDB[i].id) {
-                    lsCart = JSON.parse(lsCart)
+                lsCart.push(countInit)
 
-                    lsCart.push(countInit)
+                localStorage.setItem('blackOaksUser', JSON.stringify(lsCart))
 
-                    localStorage.setItem('blackOaksUser', JSON.stringify(lsCart))
-
-                    lsCart = localStorage.getItem('blackOaksUser')
-                }
+                lsCart = localStorage.getItem('blackOaksUser')
             }
         }
+    }
 
-        //if there is at least one item in the cart
-        if (processor[0]) {
+    //if there is at least one item in the cart
+    if (processor[0]) {
 
-            // setting a boolean to check for if a piece of logic has been executed inside the non-matching loop
-            let ran = false;
+        // setting a boolean to check for if a piece of logic has been executed inside the non-matching loop
+        let ran = false;
 
-            //push all IDs of cart into array for checking
-            for (let i = 0; i < processor.length; i++) {
+        //push all IDs of cart into array for checking
+        for (let i = 0; i < processor.length; i++) {
 
-                toCheckIDs.push(parseInt(Object.keys(processor[i])[0]));
+            toCheckIDs.push(parseInt(Object.keys(processor[i])[0]));
 
+        }
+
+        // loop through IDs and find a match if there is one
+        for (let j = 0; j < toCheckIDs.length; j++) {
+
+            if (toCheckIDs[j] === itemNum) {
+
+                /*  if the itemNum is matched with the current iteration of the ID Checker, 
+                    loop through the cart to determine what item to manipulate */
+                for (let k = 0; k < processor.length; k++) {
+
+                    // upon finding the item the cart aready has, find its current count by its ID
+                    let currCount = parseInt(Object.values(processor[k])[0])
+
+                    /*runs this code as long as the current iteration of the ID Checker 
+                    still matches the ID of the item from the lsCart we are about to manipulate */
+                    if (toCheckIDs[j] === parseInt(Object.keys(processor[k]))) {
+
+                        // increment the count of the item we are about to manipulate
+
+                        if (operation === '+') {
+                            currCount++
+                        }
+                        if (operation === '-') {
+                            currCount--
+                        }
+                        // if (currCount === 1 && operation === "-") {
+
+                        // }
+
+                        // sets the new 'count' variable overtop the matched item's current count at this iteration
+                        processor[k][itemNum] = currCount;
+
+                        /* find where this item's position is in the lsCart array AKA processor.
+                            this is needed so that this code does not re-order the cart, therefore
+                            re-ordering the map of items in the cart. for the user this would be confusing
+                            as they would not know which item they put in the cart first. */
+                        let currIndex = processor.indexOf(processor[k]);
+                        if (currIndex !== -1) {
+                            processor.splice(currIndex, 1, processor[k])
+                        }
+
+                        // re-stringify the parsed lsCart
+                        lsCart = JSON.stringify(processor)
+
+
+                    }
+                }
             }
 
-            // loop through IDs and find a match if there is one
-            for (let j = 0; j < toCheckIDs.length; j++) {
+            /*  if the itemNum is not matched with the current iteration of the ID Checker 
+                and this piece of code has not ran yet, it is safe to assume we can add a new item to the cart.
+                create a new object with the itemNum AKA the ID as the key and a count of 1 as the value.
+                this will allow it to be manipulated later on just like the others before it.  as long
+                as the the itemNum still matches an ID in the database, we push to processor AKA the 
+                parsed lsCart, which is then stringified.*/
 
-                if (toCheckIDs[j] === itemNum) {
+            if (toCheckIDs[j] !== itemNum && ran === false) {
+                ran = true;
 
-                    /*  if the itemNum is matched with the current iteration of the ID Checker, 
-                        loop through the cart to determine what item to manipulate */
-                    for (let k = 0; k < processor.length; k++) {
+                if (toCheckIDs.indexOf(itemNum) === -1) {
+                    const objInit = { [itemNum]: 1 }
 
-                        // upon finding the item the cart aready has, find its current count by its ID
-                        let currCount = parseInt(Object.values(processor[k])[0])
+                    for (var l = 0; l < ProductsDB.length; l++) {
 
-                        /*runs this code as long as the current iteration of the ID Checker 
-                        still matches the ID of the item from the lsCart we are about to manipulate */
-                        if (toCheckIDs[j] === parseInt(Object.keys(processor[k]))) {
+                        if (itemNum === ProductsDB[l].id) {
 
-                            // increment the count of the item we are about to manipulate
-                            let count = currCount + 1;
+                            processor.push(objInit)
 
-                            // using regex to ignore the dollar sign in mathmatical operations
-                            //price = (count * parseFloat(price.replace(/\$/g, '')).toFixed(2));
-
-                            // sets the new 'count' variable overtop the matched item's current count at this iteration
-                            processor[k][itemNum] = count;
-
-                            /* find where this item's position is in the lsCart array AKA processor.
-                                this is needed so that this code does not re-order the cart, therefore
-                                re-ordering the map of items in the cart. for the user this would be confusing
-                                as they would not know which item they put in the cart first. */
-                            let currIndex = processor.indexOf(processor[k]);
-                            if (currIndex !== -1) {
-                                processor.splice(currIndex, 1, processor[k])
-                            }
-
-                            // re-stringify the parsed lsCart
                             lsCart = JSON.stringify(processor)
-                        }
-                    }
-                }
 
-                /*  if the itemNum is not matched with the current iteration of the ID Checker 
-                    and this piece of code has not ran yet, it is safe to assume we can add a new item to the cart.
-                    create a new object with the itemNum AKA the ID as the key and a count of 1 as the value.
-                    this will allow it to be manipulated later on just like the others before it.  as long
-                    as the the itemNum still matches an ID in the database, we push to processor AKA the 
-                    parsed lsCart, which is then stringified.*/
-
-                if (toCheckIDs[j] !== itemNum && ran === false) {
-                    ran = true;
-
-                    if (toCheckIDs.indexOf(itemNum) === -1) {
-                        const objInit = { [itemNum]: 1 }
-
-                        for (var l = 0; l < ProductsDB.length; l++) {
-
-                            if (itemNum === ProductsDB[l].id) {
-
-                                processor.push(objInit)
-
-                                lsCart = JSON.stringify(processor)
-
-                            }
                         }
                     }
                 }
@@ -189,76 +206,18 @@ export default function itemHandler(itemNum, operation) {
         }
     }
 
-    if (operation === "-") {
-
-    }
 
     localStorage.setItem('blackOaksUser', lsCart)
-
-
     toCheckIDs = [];
     processor = JSON.parse(lsCart) || [];
 
-    return cartHandler();
+    cartHandler();
 }
 
-// master total to export to DOM
-export let total = 0;
+export function cartClear() {
+    localStorage.clear();  
+    localStorage.setItem('blackOaksUser', "[]")
+    cart=[];
+    cartHandler();
 
-export function getTotal() {
-
-
-    //set prices and total to empty array and 0 respectively to ensure accurate totaling
-    total = 0;
-    let prices = [];
-    let processor = cart;
-
-    for (let i = 0; i < processor.length; i++) {
-        
-        prices.push(parseFloat(processor[i].price * processor[i].count));
-
-    }
-
-    // // use array.reduce to summate all prices in the prices array
-    let sum = prices.reduce(function (a, b) {
-        return a + b;
-    }, 0);
-
-    // //rounding to two decimal places, then setting the total to be exported to the DOM
-    total = sum.toFixed(2);
-
-
-    //console.log(prices, total)
-}
-
-export function itemRemover(id) {
-
-    let toCheckIDs = [];
-    let processor = JSON.parse(lsCart) || [];
-
-    for (let i = 0; i < processor.length; i++) {
-        toCheckIDs.push(parseInt(Object.keys(processor[i])[0]));
-    }
-
-    for (let j = 0; j < toCheckIDs.length; j++) {
-        if (id === toCheckIDs[j]) {
-            for (let k = 0; k < processor.length; k++) {
-                if (toCheckIDs[j] === parseInt(Object.keys(processor[k]))) {
-
-                    let currIndex = processor.indexOf(processor[k]);
-                    console.log(currIndex)
-
-                    processor.splice(currIndex, 1)
-
-                    console.log(processor);
-
-                    // re-stringify the parsed lsCart
-                    lsCart = JSON.stringify(processor)
-                }
-            }
-        }
-    }
-    localStorage.setItem('blackOaksUser', lsCart)
-
-    return cartHandler();
-} 
+  }

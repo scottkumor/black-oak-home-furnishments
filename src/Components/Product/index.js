@@ -16,7 +16,6 @@ function Product(props) {
 
     const myRef = React.useRef(null);
 
-    console.log()
     return (
         <>
             <div ref={myRef} className="reference"/>
@@ -27,7 +26,7 @@ function Product(props) {
                         <FontAwesomeIcon icon={faCartPlus} />
                         <div> Add to Cart </div>
                     </button> */}
-                    <button onClick={() => itemHandler(props.id, "+")} className="bag-btn" data-id={props.id}>
+                    <button onClick={() => itemHandler(props.id, "+", 1)} className="bag-btn" data-id={props.id}>
                     <FontAwesomeIcon icon={faCartPlus} />
                         Add to Cart
                     </button>
