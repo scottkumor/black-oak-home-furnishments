@@ -10,21 +10,14 @@ export let lsCart = localStorage.getItem('blackOaksUser') || '[]';
 // function that handles cart operations
 export function cartHandler() {
 
-    //console.log('handling cart')
-
-
     // makes sure we get the cart in its current state
     lsCart = localStorage.getItem('blackOaksUser')
-    
-    //console.log(cart)
-
 
     // checks if the logged in user has a cart in LS, if not make one, set LS as empty array
-    if (lsCart === '[]' 
-    //|| !lsCart
+    if (lsCart === '[]'
+        //|| !lsCart
     ) {
         localStorage.setItem('blackOaksUser', "[]")
-        //console.log('handled empty cart')
     }
 
     /*  after setting up an empty array, push into it all IDs of items in lsCart.
@@ -33,12 +26,11 @@ export function cartHandler() {
         but push it to my new array where it can be looped through and check in the DB. 
         I then needed to pull up the associatedcount for this user's cart items and 
         match them to the object, passing all that data down to the CartItem component 
-        so it can render the item correctly in the cart.*/         
-    
+        so it can render the item correctly in the cart.*/
+
 
     else if (lsCart !== '[]') {
 
-        //console.log('handling existing cart')
         cart = [];
         let toCheckIDs = [];
         let processor = JSON.parse(lsCart) || [];
@@ -154,9 +146,11 @@ export default function itemHandler(itemNum, operation) {
                         if (operation === '-') {
                             currCount--
                         }
-                        // if (currCount === 1 && operation === "-") {
-
-                        // }
+                        if (currCount < 1 && operation === "-") {
+                            //if there is only one item, skip to the remover function and break the fn
+                            itemRemover(parseInt(Object.keys(processor[k])));
+                            break;
+                        }
 
                         // sets the new 'count' variable overtop the matched item's current count at this iteration
                         processor[k][itemNum] = currCount;
@@ -172,7 +166,6 @@ export default function itemHandler(itemNum, operation) {
 
                         // re-stringify the parsed lsCart
                         lsCart = JSON.stringify(processor)
-
 
                     }
                 }
@@ -215,9 +208,52 @@ export default function itemHandler(itemNum, operation) {
 }
 
 export function cartClear() {
-    localStorage.clear();  
+
+    localStorage.clear();
     localStorage.setItem('blackOaksUser', "[]")
-    cart=[];
+    cart = [];
     cartHandler();
 
-  }
+}
+
+export function itemRemover(id) {
+
+    let toCheckIDs = [];
+
+    let processor = JSON.parse(lsCart);
+
+    for (let i = 0; i < processor.length; i++) {
+        toCheckIDs.push(parseInt(Object.keys(processor[i])[0]));
+    }
+
+    for (let j = 0; j < toCheckIDs.length; j++) {
+
+        if (id === toCheckIDs[j]) {
+
+            for (let k = 0; k < processor.length; k++) {
+
+                    /* once we determine the correct item to remove, we need to
+                    next figure out where to splice the array so that when
+                    the item is removed, the array does not reorder. we reset
+                    lsCart to the new array.*/
+
+                if (toCheckIDs[j] === parseInt(Object.keys(processor[k]))) {
+
+                    let currIndex = processor.indexOf(processor[k]);
+
+                    processor.splice(currIndex, 1)
+
+                    localStorage.setItem('blackOaksUser', JSON.stringify(processor))
+                }
+            }
+        }
+    }
+
+    // if there is only one item in the cart, triggers clearing fn
+    if (processor.length < 1) {
+        cartClear();
+    }
+
+    cartHandler();
+
+}
