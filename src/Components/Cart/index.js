@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose, faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 //import CartItem from "./../../Components/Cart-Item/index"
 //import ProductsDB from "../../products.json"
-import itemHandler, { cartHandler, cart, cartClear, lsCart } from "./../../CartHelpers.js"
+import itemHandler, { cart, cartClear, itemRemover, lsCart } from "./../../CartHelpers.js"
 
 
 export default function Cart(props) {
@@ -19,6 +19,11 @@ export default function Cart(props) {
   useEffect(() => {
     getTotal(myTotal, myCart);
   }, [myTotal, myCart, lsCart]);
+
+  useEffect(() => {
+    removeItem();
+    getTotal(myTotal, myCart);
+  }, [lsCart]);
 
   // throws error that lsCart isn't a valid dependency - it may not be, but the cart it renders depends on it so i left the error. the effects do not work without it
 
@@ -35,12 +40,12 @@ export default function Cart(props) {
 
 
   const getTotal = (total, cart) => {
-    
+
     if (cart.length) {
-    
-    //set prices and total to empty array and 0 respectively to ensure accurate totaling
-    let prices = [];
-    let processor = cart;
+
+      //set prices and total to empty array and 0 respectively to ensure accurate totaling
+      let prices = [];
+      let processor = cart;
 
       for (let i = 0; i < processor.length; i++) {
 
@@ -62,39 +67,11 @@ export default function Cart(props) {
     }
   }
 
-
-
-  //  function itemRemover(id) {
-
-  //   let toCheckIDs = [];
-  //   let processor = JSON.parse(lsCart) || [];
-
-  //   for (let i = 0; i < processor.length; i++) {
-  //       toCheckIDs.push(parseInt(Object.keys(processor[i])[0]));
-  //   }
-
-  //   for (let j = 0; j < toCheckIDs.length; j++) {
-  //       if (id === toCheckIDs[j]) {
-  //           for (let k = 0; k < processor.length; k++) {
-  //               if (toCheckIDs[j] === parseInt(Object.keys(processor[k]))) {
-
-  //                   let currIndex = processor.indexOf(processor[k]);
-
-
-  //                   processor.splice(currIndex, 1)
-
-
-
-  //                   // re-stringify the parsed lsCart
-  //                   lsCart = JSON.stringify(processor)
-  //               }
-  //           }
-  //       }
-  //   }
-  //   localStorage.setItem('blackOaksUser', lsCart)
-
-  //   return cartHandler();
-  // }
+  const removeItem = (id) => {
+    console.log('remover')
+    itemRemover(id);
+    setCart(cart);
+  }
 
 
 
@@ -113,13 +90,14 @@ export default function Cart(props) {
         <div id="cart" className="cart-content" onClick={e => e.stopPropagation()}>
 
           {/* -------------------------------------------------------------------------------------------------------- */}
+
           {cart.map((item) => (
             <div className="cart-item" key={item.id}>
               <img src={process.env.PUBLIC_URL + `${item.image}`} alt={item.title} className="" />
               <div className="wrap-one">
                 <h4> {item.title} </h4>
                 <h5 id="price" data-price={item.price}>${item.price} </h5>
-                <span className="remove-item">remove</span>
+                <span className="remove-item" onClick={() => removeItem(item.id)}>Remove</span>
               </div>
               <div className="wrap-two" onChange={item.onChange}>
                 <FontAwesomeIcon onClick={() => chevronHandler(item.id, "+", item.counter)} icon={faChevronUp} />
@@ -127,8 +105,8 @@ export default function Cart(props) {
                 <FontAwesomeIcon onClick={() => chevronHandler(item.id, "-", item.counter)} icon={faChevronDown} />
               </div>
             </div>
-
           ))}
+
           {/* -------------------------------------------------------------------------------------------------------- */}
 
 
@@ -150,5 +128,4 @@ export default function Cart(props) {
       </div>
     </div>
   );
-  // }
 }
