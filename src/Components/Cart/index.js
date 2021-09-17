@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose, faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-//import CartItem from "./../../Components/Cart-Item/index"
-//import ProductsDB from "../../products.json"
 import itemHandler, { cart, cartClear, itemRemover, lsCart } from "./../../CartHelpers.js"
+import MyModal from "../Cart-Modal";
 
 
 export default function Cart(props) {
@@ -68,13 +67,9 @@ export default function Cart(props) {
   }
 
   const removeItem = (id) => {
-    console.log('remover')
     itemRemover(id);
     setCart(cart);
   }
-
-
-
 
   return (
 
@@ -96,8 +91,11 @@ export default function Cart(props) {
               <img src={process.env.PUBLIC_URL + `${item.image}`} alt={item.title} className="" />
               <div className="wrap-one">
                 <h4> {item.title} </h4>
-                <h5 id="price" data-price={item.price}>${item.price} </h5>
-                <span className="remove-item" onClick={() => removeItem(item.id)}>Remove</span>
+                <h5 id="price"> ${item.price} </h5>
+                <div className="btnsWrap">
+                  <MyModal {...item} />
+                  <span className="remove-item" onClick={() => removeItem(item.id)}>Remove</span>
+                </div>
               </div>
               <div className="wrap-two" onChange={item.onChange}>
                 <FontAwesomeIcon onClick={() => chevronHandler(item.id, "+", item.counter)} icon={faChevronUp} />

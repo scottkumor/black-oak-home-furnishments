@@ -1,8 +1,4 @@
 import React from 'react'
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 export default function Card(props) {
 
@@ -20,7 +16,7 @@ export default function Card(props) {
                 <div className={collection+"-blurb"}>{props.blurb}</div>
                 {/* <div className={collection+"-category"}>{props.category}</div> */}
                 <div className={collection+"-price"}>{props.price}</div>
-                {/* <button className="bag-btn" data-id="1">
+                {/* <button onClick={() => itemHandler(props.id, "+")} className="bag-btn">
                     <FontAwesomeIcon icon={faCartPlus} />
                     <div> Add to Cart </div>
                 </button> */}
