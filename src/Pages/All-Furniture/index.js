@@ -49,6 +49,7 @@ export default class All extends Component {
             // link={item.link} link to its own modal? page?
             // icon={item.icon} icon based on category
             />
+            
           ))}
         </div>
       </>

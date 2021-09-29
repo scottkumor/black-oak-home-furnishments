@@ -1,6 +1,5 @@
 
-.executive-pageWrap {
-    
+.executive-pageWrap {  
     --execPrimary:#780001;
     --execSecondary: #4a0001;
     --execTertiary: #cf0600;
@@ -52,7 +51,32 @@
     background-color:var(--execAccent);   
 }
 
-.executive-cardWrap {
+.executive-blurb::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--execAccent) ;
+    border-left: 3px solid var(--execAccent) ;
+}
+
+.executive-blurb::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--execAccent);
+    border-right: 3px solid var(--execAccent);
+}
+
+.executive-cardCartBtn {
+    background: var(--execSecondary);
+    color: var(--execAccent);
+}
+
+.executive-cardCartBtn:hover {
+    color: var(--execText);
+    background-color:var(--execTertiary); 
+}
+
+/* unused styles */
+/* .executive-cardWrap {
 
 }
 
@@ -70,27 +94,12 @@
 
 .executive-blurb {
 
-}
+} */
 
-.executive-blurb::before {
-    top: -2px;
-    left: -2px;
-    border-top: 3px solid var(--execAccent) ;
-    border-left: 3px solid var(--execAccent) ;
-}
-
-.executive-blurb::after {
-    bottom: -2px;
-    right: -2px;
-    border-bottom: 3px solid var(--execAccent);
-    border-right: 3px solid var(--execAccent);
-}
-
-.executive-category {
+/* .executive-category {
 
 }
 
 .executive-price {
 
-}
-
+} */

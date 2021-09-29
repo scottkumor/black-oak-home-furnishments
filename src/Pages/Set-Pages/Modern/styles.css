@@ -1,7 +1,7 @@
 .modern-pageWrap {
     
     --modPrimary:#9579d1 ;
-    --modSecondary: #7eb8da;
+    --modSecondary: #a9e0ff;
     --modTertiary: #be9ddf;
     --modAccent: #ffa5d8;
     --modText: #004a57;
@@ -29,7 +29,7 @@
 .modern-collSubTitle {
     border: 0px;
     border-bottom: 3px solid;
-    border-image: linear-gradient(to right, var(--modText) 0%, var(--modAccent) 50%, var(--modText) 100%);
+    border-image: linear-gradient(to right, var(--modPrimary) 0%, var(--modAccent) 50%, var(--modPrimary) 100%);
     border-image-slice: 1;
 }
 
@@ -37,8 +37,8 @@
     border-image: 
     linear-gradient(
     to bottom, 
-    var(--modTertiary), 
-    var(--modText)
+    var(--modPrimary),
+    var(--modSecondary)
     ) 1 100%;
 }
 
@@ -51,6 +51,31 @@
     background-color:var(--modText);   
 }
 
+.modern-blurb::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--modAccent) ;
+    border-left: 3px solid var(--modAccent) ;
+}
+
+.modern-blurb::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--modAccent);
+    border-right: 3px solid var(--modAccent);
+}
+
+.modern-cardCartBtn {
+    background: var(--modTertiary);
+    color: var(--modText);
+}
+
+.modern-cardCartBtn:hover {
+    background-color:var(--modSecondary); 
+    color: var(--modPrimary);
+}
+
+/* unused styles
 .modern-cardWrap {
 
 }
@@ -71,25 +96,10 @@
 
 }
 
-.modern-blurb::before {
-    top: -2px;
-    left: -2px;
-    border-top: 3px solid var(--modAccent) ;
-    border-left: 3px solid var(--modAccent) ;
-}
-
-.modern-blurb::after {
-    bottom: -2px;
-    right: -2px;
-    border-bottom: 3px solid var(--modAccent);
-    border-right: 3px solid var(--modAccent);
-}
-
 .modern-category {
 
 }
 
 .modern-price {
 
-}
-
+} */
