@@ -92,6 +92,8 @@
 [class$="-cardTitle"]{
     font-size: xx-large;
     width: 100%;
+    text-transform: capitalize;
+    text-align: center;
 }
 
 [class$="-blurb"]{
@@ -118,7 +120,44 @@
 }
 
 [class$="-price"]{
-    font-size:x-large;
-    text-align:right;
-    width: 100%;
+    font-size:xx-large;    
 }
+
+[class$="-cardCartBtn"] {
+    padding: 1vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid black .3px;
+    border-radius: 0px;
+    transition: all 0.2s ease-in-out;
+    font-size: large;
+    cursor: pointer;
+  }
+  
+  
+  [class$="-cardCartBtn"]:hover {
+    color: var(--mainBlack);
+    background-color: var(--mainWhite);
+    transform: scale(1.01);
+  }
+  
+  [class$="-cardCartBtn"]:active {
+    transform: scale(.8);
+  }
+
+  [class$="-cardCartBtn"] > svg {
+    margin: 0 1vh;
+  }
+  
+  [class$="-cardCartBtn"] > div {
+    margin: 0 1vh;
+  }
+
+  .priceGroup {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      height: auto;
+  }

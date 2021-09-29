@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import itemHandler from "./../../CartHelpers.js";
 
 export default function Card(props) {
 
@@ -7,22 +10,24 @@ export default function Card(props) {
     let collection = props.collection.split(' ')[0];
 
     return (
-        
-        <article id={props.id} key={props.id} className={collection+"-cardWrap"}>
-            <img src={process.env.PUBLIC_URL + `${props.image}`} alt={props.title} className={collection+"-cardImage"} />
-            
-            <section className={collection+"-detailsWrap"}>
-                <div className={collection+"-cardTitle"}>{props.title}</div>
-                <div className={collection+"-blurb"}>{props.blurb}</div>
+
+        <article id={props.id} key={props.id} className={collection + "-cardWrap"}>
+            <img src={process.env.PUBLIC_URL + `${props.image}`} alt={props.title} className={collection + "-cardImage"} />
+
+            <section className={collection + "-detailsWrap"}>
+                <div className={collection + "-cardTitle"}>{props.title}</div>
+                <div className={collection + "-blurb"}>{props.blurb}</div>
                 {/* <div className={collection+"-category"}>{props.category}</div> */}
-                <div className={collection+"-price"}>{props.price}</div>
-                {/* <button onClick={() => itemHandler(props.id, "+")} className="bag-btn">
-                    <FontAwesomeIcon icon={faCartPlus} />
-                    <div> Add to Cart </div>
-                </button> */}
+                <div className="priceGroup">
+                    <div className={collection + "-price"}>{props.price}</div>
+                    <button onClick={() => itemHandler(props.id, "+")} className={collection+"-cardCartBtn"}>
+                        <FontAwesomeIcon icon={faCartPlus} />
+                        <div> Add to Cart </div>
+                    </button>
+                </div>
             </section>
         </article>
-        
+
     )
 
 }

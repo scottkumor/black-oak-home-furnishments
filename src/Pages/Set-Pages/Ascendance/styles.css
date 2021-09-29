@@ -1,7 +1,7 @@
 
 .ascendance-pageWrap {
     
-    --ascPrimary:#3a1202 ;
+    --ascPrimary:#471602 ;
     --ascSecondary: #c2ccd4;
     --ascTertiary: #8c8b79;
     --ascAccent: #1db7cf;
@@ -11,7 +11,6 @@
 .ascendance-headWrap {
     color: var(--ascText);
 }
-
 
 .ascendance-collDescription::before {
     top: -2px;
@@ -30,7 +29,7 @@
 .ascendance-collSubTitle{
     border: 0px;
     border-bottom: 3px solid;
-    border-image: linear-gradient(to right, var(--ascText) 0%, var(--ascAccent) 50%, var(--ascText) 100%);
+    border-image: linear-gradient(to right, var(--ascPrimary) 0%, var(--ascAccent) 50%, var(--ascPrimary) 100%);
     border-image-slice: 1;
 }
 
@@ -38,8 +37,8 @@
     border-image: 
     linear-gradient(
     to bottom, 
-    var(--ascTertiary), 
-    var(--ascText)
+    var(--ascPrimary), 
+    var(--ascAccent)
     ) 1 100%;
 }
 
@@ -52,6 +51,32 @@
     background-color:var(--ascText);   
 }
 
+.ascendance-blurb::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--ascAccent) ;
+    border-left: 3px solid var(--ascAccent) ;
+}
+
+.ascendance-blurb::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--ascAccent);
+    border-right: 3px solid var(--ascAccent);
+}
+
+.ascendance-cardCartBtn {
+    background: var(--ascText);
+    color: var(--ascSecondary);
+}
+
+.ascendance-cardCartBtn:hover {
+    background-color:var(--ascPrimary); 
+    color: var(--ascAccent);
+}
+
+
+/* unused styles
 .ascendance-cardWrap {
 
 }
@@ -72,25 +97,10 @@
 
 }
 
-.ascendance-blurb::before {
-    top: -2px;
-    left: -2px;
-    border-top: 3px solid var(--ascAccent) ;
-    border-left: 3px solid var(--ascAccent) ;
-}
-
-.ascendance-blurb::after {
-    bottom: -2px;
-    right: -2px;
-    border-bottom: 3px solid var(--ascAccent);
-    border-right: 3px solid var(--ascAccent);
-}
-
 .ascendance-category {
 
 }
 
 .ascendance-price {
 
-}
-
+} */

@@ -52,7 +52,32 @@
     color: var(--ardTertiary);
     background-color:var(--ardText);   
 }
+.ardence-blurb::before {
+    top: -2px;
+    left: -2px;
+    border-top: 3px solid var(--ardAccent) ;
+    border-left: 3px solid var(--ardAccent) ;
+}
 
+.ardence-blurb::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 3px solid var(--ardAccent);
+    border-right: 3px solid var(--ardAccent);
+}
+
+.ardence-cardCartBtn {
+    background: var(--ardSecondary);
+    color: var(--ardPrimary);
+}
+
+.ardence-cardCartBtn:hover {
+    background-color:var(--ardAccent); 
+    color: var(--ardText);
+}
+
+
+/* unused styles
 .ardence-cardWrap {
 
 }
@@ -73,26 +98,10 @@
 
 }
 
-.ardence-blurb::before {
-    top: -2px;
-    left: -2px;
-    border-top: 3px solid var(--ardAccent) ;
-    border-left: 3px solid var(--ardAccent) ;
-}
-
-.ardence-blurb::after {
-    bottom: -2px;
-    right: -2px;
-    border-bottom: 3px solid var(--ardAccent);
-    border-right: 3px solid var(--ardAccent);
-}
-
 .ardence-category {
 
 }
 
 .ardence-price {
 
-}
-
-
+} */

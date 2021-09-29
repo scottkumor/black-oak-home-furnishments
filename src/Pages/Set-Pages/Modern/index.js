@@ -56,7 +56,6 @@ export default class Modern extends Component {
                             category={item.category}
                             type={item.type}
                             blurb={item.blurb}
-                        // link={item.link} link to its own modal? page?
                         // icon={item.icon} icon based on category
                         />
                     ))}

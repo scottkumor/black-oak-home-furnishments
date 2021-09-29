@@ -10,10 +10,9 @@ export default class Ardence extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
     }
-    
+
     render() {
 
-        
         let prodsArray = [];
 
         for (var i = 0; i < ProductsDB.length; i++) {
@@ -24,7 +23,6 @@ export default class Ardence extends Component {
 
         // trim the 'collection' off the end of the string so it can be used for unique classes
         let collection = prodsArray[0].collection.split(' ')[0];
-
 
         return (
             <div className={collection + "-pageWrap"}>
@@ -57,14 +55,11 @@ export default class Ardence extends Component {
                             category={item.category}
                             type={item.type}
                             blurb={item.blurb}
-                        // link={item.link} link to its own modal? page?
                         // icon={item.icon} icon based on category
                         />
                     ))}
                 </div>
                 <Link to="/collections" className={collection + "-backBtn"}>Back to Collections</Link>
-
-
             </div>
         )
     }

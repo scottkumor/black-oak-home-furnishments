@@ -22,29 +22,29 @@ export default class Executive extends Component {
         }
 
         // trim the 'collection' off the end of the string so it can be used for unique classes
-            let collection = prodsArray[0].collection.split(' ')[0];
+        let collection = prodsArray[0].collection.split(' ')[0];
 
         return (
-            <div className={collection+"-pageWrap"}>
+            <div className={collection + "-pageWrap"}>
 
-                <div className={collection+"-headWrap"}>
-                    <div className={collection+"-collTitle"}>
+                <div className={collection + "-headWrap"}>
+                    <div className={collection + "-collTitle"}>
                         The Executive Collection
                     </div>
 
-                    <p className={collection+"-collDescription"}>
+                    <p className={collection + "-collDescription"}>
                         The Executive Collection is all about class - each of these products exhudes
                         a presence that can only be matched in the upper echelons. Now you
                         too can be high society when you bring any of these fine furnishments into
                         your home.
                     </p>
 
-                    <div className={collection+"-collSubTitle"}>
+                    <div className={collection + "-collSubTitle"}>
                         Project Greatness.
                     </div>
                 </div>
 
-                <div className={collection+"-cardsWrap"}>
+                <div className={collection + "-cardsWrap"}>
                     {prodsArray.map(item => (
                         <Card
                             id={item.id}
@@ -56,13 +56,11 @@ export default class Executive extends Component {
                             category={item.category}
                             type={item.type}
                             blurb={item.blurb}
-                        // link={item.link} link to its own modal? page?
                         // icon={item.icon} icon based on category
                         />
                     ))}
                 </div>
-                <Link to="/collections" className={collection+"-backBtn"}>Back to Collections</Link>
-
+                <Link to="/collections" className={collection + "-backBtn"}>Back to Collections</Link>
             </div>
         )
     }
