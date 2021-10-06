@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { faWindowClose, faCaretRight, faCaretSquareRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 
-export default class Menu extends Component {
-
-    /* 
-        possibly make expanded  menu options dynamic like the Collections, maybe write it to a json file so 
-        it can be globally accessed
-    */
+// export default class Menu extends Component {
+export default function Menu(props) {
 
     /* 
         ternary handleMenu onClicks: when I added the onClick to close the menu and the overlay, the close button did not
@@ -24,99 +20,183 @@ export default class Menu extends Component {
     
     */
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            drop: false,
-        };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         drop: false,
+    //     };
 
-        this.handleDrop = this.handleDrop.bind(this);
-    }
+    //     this.handleDrop = this.handleDrop.bind(this);
+    // }
 
-    handleDrop() {
+    // handleDrop() {
 
-        this.setState(state => ({
-            drop: !state.drop
-        }))
+    //     this.setState(state => ({
+    //         drop: !state.drop
+    //     }))
 
-    }
+    // }
 
-    render() {
+    // render() {
 
-        return (
+    //     return (
 
+    //         <div
+    //             className={this.props.menu ? "menu-overlay menu-overlay-show" : "menu-overlay menu-overlay-hide"}
+    //             onClick={this.props.menu ? this.props.handleMenu : null}
+    //         >
+    //             <div
+    //                 className={this.props.menu ? "showMenu menu" : "menu"}
+    //                 onClick={e => e.stopPropagation()}
+    //             >
+    //                 <span
+    //                     className="close-menu"
+    //                     onClick={(e => e.stopPropagation())}
+    //                 >
+    //                     <h1 className="menu-header">Navigation</h1>
+    //                     <FontAwesomeIcon
+    //                         className="close"
+    //                         onClick={this.props.handleMenu}
+    //                         size="4x"
+    //                         icon={faWindowClose}
+    //                     />
+    //                 </span>
+    //                 <div
+    //                     className="menu-links-wrap"
+    //                     onClick={e => e.stopPropagation()}
+    //                 >
+    //                     <div
+    //                         className="menu-links"
+    //                         onClick={this.props.handleMenu}
+    //                     >
+    //                         <Link to="/">
+    //                             Home
+    //                         </Link>
+    //                         <Link to="/all">
+    //                             See All Products
+    //                         </Link>
+
+    //                     </div>
+    //                     <div
+    //                         className="dropdown-wrap"
+    //                         onClick={e => e.stopPropagation()}
+    //                     >
+    //                         <div className="dropdown-toggle" onClick={this.handleDrop}>
+    //                             <h3>Furnishment Collections</h3>
+    //                             <FontAwesomeIcon
+    //                                 className={this.state.drop ? "dropdown-icon drop-open" : "dropdown-icon drop-closed"}
+    //                                 size="2x"
+    //                                 icon={faCaretRight}
+    //                             />
+    //                         </div>
+    //                         <div
+    //                             className={this.state.drop ? "dropdown-options drop-show" : "dropdown-options drop-hide"}
+    //                             onClick={this.props.handleMenu}
+    //                         >
+    //                             <Link to="/executive%20collection">
+    //                                 Executive Collection
+    //                             </Link>
+    //                             <Link to="ardence%20collection">
+    //                                 Ardence Collection
+    //                             </Link>
+    //                             <Link to="/ascendance%20collection">
+    //                                 Ascendance Collection
+    //                             </Link>
+    //                             <Link to="/modern%20collection">
+    //                                 Modern Collection
+    //                             </Link>
+    //                             <Link to="/collections">
+    //                                 See All Collections
+    //                             </Link>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     );
+    // }
+
+    return (
+        <div
+            className={props.menu ? "menu-overlay menu-overlay-show" : "menu-overlay menu-overlay-hide"}
+            onClick={props.menu ? props.handleMenu : null}
+        >
             <div
-                className={this.props.menu ? "menu-overlay menu-overlay-show" : "menu-overlay menu-overlay-hide"}
-                onClick={this.props.menu ? this.props.handleMenu : null}
+                className={props.menu ? "showMenu menu" : "menu"}
+                onClick={e => e.stopPropagation()}
             >
-                <div
-                    className={this.props.menu ? "showMenu menu" : "menu"}
-                    onClick={e => e.stopPropagation()}
+                <span
+                    className="close-menu"
                 >
-                    <span
-                        className="close-menu"
-                        onClick={(e => e.stopPropagation())}
-                    >
-                        <h1 className="menu-header">Navigation Menu</h1>
-                        <FontAwesomeIcon
-                            className="close"
-                            onClick={this.props.handleMenu}
-                            size="4x"
-                            icon={faWindowClose}
+                    <h1 className="menu-header">Navigation</h1>
+                    <FontAwesomeIcon
+                        className="close"
+                        onClick={props.handleMenu}
+                        size="4x"
+                        icon={faWindowClose}
+                    />
+                </span>
+
+                <div className="menu-links" >
+                    <Link className="menu-link" to="/" onClick={props.menu ? props.handleMenu : null}>
+                    <FontAwesomeIcon
+                            className="menu-caret"
+                            icon={faCaretSquareRight}
                         />
-                    </span>
-                    <div
-                        className="menu-links-wrap"
-                        onClick={e => e.stopPropagation()}
-                    >
-                        <div
-                            className="menu-links" 
-                            onClick={this.props.handleMenu}
-                        >
-                            <Link to="/">
-                                Home
-                            </Link>
-                            <Link to="/all">
-                                See All Products
-                            </Link>
-                            <Link to="/collections">
-                                See All Collections
-                            </Link>
-                        </div>
-                        <div
-                            className="dropdown-wrap"
-                            onClick={e => e.stopPropagation()}
-                        >
-                            <div className="dropdown-toggle">
-                                <h3>Furnishment Collections</h3>
-                                <FontAwesomeIcon
-                                    className={this.state.drop ? "dropdown-icon drop-open" : "dropdown-icon drop-closed"}
-                                    size="2x"
-                                    icon={faCaretRight}
-                                    onClick={this.handleDrop}
-                                />
-                            </div>
-                            <div
-                                className={this.state.drop ? "dropdown-options drop-show" : "dropdown-options drop-hide"}
-                                onClick={this.props.handleMenu}
-                            >
-                                <Link to="/executive%20collection">
-                                    Executive Collection
-                                </Link>
-                                <Link to="ardence%20collection">
-                                    Ardence Collection
-                                </Link>
-                                <Link to="/ascendance%20collection">
-                                    Ascendance Collection
-                                </Link>
-                                <Link to="/modern%20collection">
-                                    Modern Collection
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                        <p>Home</p>
+                    </Link>
+                    <Link className="menu-link" to="/all" onClick={props.menu ? props.handleMenu : null}>
+                    <FontAwesomeIcon
+                            className="menu-caret"
+                            icon={faCaretSquareRight}
+                        />
+                        <p>See All Products</p>
+                    </Link>
                 </div>
+
+                <h2>Furnishment Collections</h2>
+
+                <div className="coll-options">
+
+                    <Link className="coll-link" to="/ardence%20collection" onClick={props.menu ? props.handleMenu : null}>
+                        <FontAwesomeIcon
+                            className="coll-caret"
+                            icon={faCaretRight}
+                        />
+                        <p>Ardence Collection</p>
+                    </Link>
+                    <Link className="coll-link" to="/ascendance%20collection" onClick={props.menu ? props.handleMenu : null}>
+                        <FontAwesomeIcon
+                            className="coll-caret"
+                            icon={faCaretRight}
+                        />
+                        <p>Ascendance Collection</p>
+                    </Link>
+                    <Link className="coll-link" to="/executive%20collection" onClick={props.menu ? props.handleMenu : null}>
+                        <FontAwesomeIcon
+                            className="coll-caret"
+                            icon={faCaretRight}
+                        />
+                        <p>Executive Collection</p>
+                    </Link>
+                    <Link className="coll-link" to="/modern%20collection" onClick={props.menu ? props.handleMenu : null}>
+                        <FontAwesomeIcon
+                            className="coll-caret"
+                            icon={faCaretRight}
+                        />
+                        <p>Modern Collection</p>
+                    </Link>
+                    <Link className="menu-link" to="/collections" onClick={props.menu ? props.handleMenu : null}>
+                        <FontAwesomeIcon
+                            className="menu-caret"
+                            icon={faCaretSquareRight}
+                        />
+                        <p>See All Collections</p>
+                    </Link>
+
+                </div>
+
             </div>
-        );
-    }
+        </div>
+    )
 }

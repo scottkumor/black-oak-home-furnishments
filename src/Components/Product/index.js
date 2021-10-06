@@ -32,18 +32,14 @@ const Product = (props) => {
             <article className="product" key={props.id} data-type={props.type}>
 
                 <div className="img-container">
+                    
                     <img src={process.env.PUBLIC_URL + `${props.image}`} alt={props.title} className="product-img" />
-                    {/* <button className="bag-btn" data-id="1">
-                        <FontAwesomeIcon icon={faCartPlus} />
-                        <div> Add to Cart </div>
-                    </button> */}
                     <button onClick={() => itemHandler(props.id, "+", 1)} className="bag-btn" data-id={props.id}>
                         <FontAwesomeIcon icon={faCartPlus} />
                         <div onClick={() => toggleSnackBar(props.id)}>Add to Cart </div>
                     </button>
                     <button onClick={onOpenModal} className="modalBtn">View Details</button>
                     <div className="hide" id={"snackbar-"+ props.id}><p>Added to Cart!</p></div>
-
 
                 </div>
 

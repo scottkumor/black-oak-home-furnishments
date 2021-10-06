@@ -2,26 +2,40 @@
 
 :root {
   --primaryColor: #f09d51;
+  --primarycolorFaded: rgb(240, 157, 81, 0.5);
   --mainWhite: #fff;
   --mainBlack: #222;
   --mainGrey: #ececec;
-  --mainSpacing: 0.1rem;
   --mainTransition: all 0.2s ease-in-out;
+  /* 
   
+    need to work these out. first number is font, then font range, 
+    100vw - min screen, then take max screen minus min screen. 
+    maybe adjust 100vw to %? change pixels?
+
+  --xxSmall:  calc(8px + (16-8) * (100vw - 320px) / (374-320));
+  --xSmall:   calc(16px + (24-16) * (100vw - 320px) / (374-320));
+  --small:    calc(24px + (32-24) * (100vw - 375px) / (424-375));
+  --medium:   calc(32px + (40-32) * (100vw - 425px) / (767-425));
+  --large:    calc(40px + (48-40) * (100vw - 768px) / (1023-768));
+  --xLarge:   calc(48px + (56-48) * (100vw - 1024px) / (1439-1024));
+  --xxLarge:  calc(56px + (64-56) * (100vw - 1440px) / (2559-1440));
+  --jumbo:    calc(64px + (72-64) * (100vw - 2560px) / (4320-2560)); 
+  
+  */
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
-
 }
 
 body {
   color: var(--mainBlack);
   background: var(--mainWhite);
   height: 100%;
-  
 }
 
 a {
