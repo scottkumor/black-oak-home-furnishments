@@ -1,5 +1,4 @@
 import ProductsDB from "./products.json"
-//import getTotal from './Components/Cart'
 
 //the master cart to export to DOM
 export let cart = [];
@@ -17,7 +16,7 @@ export function cartHandler() {
     if (lsCart === '[]'
         //|| !lsCart
     ) {
-        localStorage.setItem('blackOaksUser', "[]")
+        localStorage.setItem('blackOaksUser', "[]");
     }
 
     /*  after setting up an empty array, push into it all IDs of items in lsCart.
@@ -232,10 +231,10 @@ export function itemRemover(id) {
 
             for (let k = 0; k < processor.length; k++) {
 
-                    /* once we determine the correct item to remove, we need to
-                    next figure out where to splice the array so that when
-                    the item is removed, the array does not reorder. we reset
-                    lsCart to the new array.*/
+                /* once we determine the correct item to remove, we need to
+                next figure out where to splice the array so that when
+                the item is removed, the array does not reorder. we reset
+                lsCart to the new array.*/
 
                 if (toCheckIDs[j] === parseInt(Object.keys(processor[k]))) {
 
@@ -253,7 +252,15 @@ export function itemRemover(id) {
     if (processor.length < 1) {
         cartClear();
     }
-
     cartHandler();
+}
 
+export function iconHandler(icon) {
+    if (icon !== (Object.keys(JSON.parse(lsCart)).length)) {
+        icon = Object.keys(JSON.parse(lsCart)).length;
+        return icon;
+    }
+    else {
+        return icon;
+    }
 }
