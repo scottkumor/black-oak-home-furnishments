@@ -63,6 +63,21 @@
   letter-spacing: var(--mainSpacing);
   margin-bottom: 2rem;
 }
+
+.total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  width: 100%;
+  text-transform: capitalize;
+
+}
+
+
+
+
+
+
 /*---------- Cart Item -------------------- */
 
 
@@ -112,8 +127,12 @@
   margin-top: 2rem;
   letter-spacing: var(--mainSpacing);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.cart-footer h3 {
+.cart-footer h1 {
   text-transform: capitalize;
   margin-bottom: 1rem;
 }

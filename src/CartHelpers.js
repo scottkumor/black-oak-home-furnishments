@@ -264,3 +264,4 @@ export function iconHandler(icon) {
         return icon;
     }
 }
+

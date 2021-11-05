@@ -7,6 +7,7 @@ import Ardence from './Pages/Set-Pages/Ardence/index'
 import Ascendance from './Pages/Set-Pages/Ascendance/index'
 import NavBar from './Components/Navigation-Bar/index'
 import Collections from './Pages/Collections Page/index'
+import Checkout from './Pages/Checkout/index'
 import Footer from "./Components/Footer"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './main.css';
@@ -17,6 +18,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        
         <NavBar />
         
         <Switch>
@@ -38,12 +40,13 @@ function App() {
           <Route path="/ascendance collection">
             <Ascendance />
           </Route>
-
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
-        
 
       </div>
       <Footer />

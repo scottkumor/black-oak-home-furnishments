@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose, faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import itemHandler, { cart, cartClear, itemRemover, lsCart } from "./../../CartHelpers.js"
 import MyModal from "../Cart-Modal";
+import CheckoutModal from "./../Checkout-Modal"
 
 
 export default function Cart(props) {
@@ -110,11 +111,23 @@ export default function Cart(props) {
 
         </div>
         <div className="cart-footer" >
-          <h3> your total: $
-            <span id="total" className="cl-total">
-              {myTotal}
-            </span>
-          </h3>
+
+          <div className="total">
+            <h2> your total: </h2>
+            <h1> ${myTotal} </h1>
+          </div>
+
+          <CheckoutModal
+            {...cart}
+            cart={cart}
+            chevronHandler={chevronHandler}
+            clearCart={clearCart}
+            getTotal={getTotal}
+            removeItem={removeItem}
+            myTotal={myTotal}
+            handleCart={props.handleCart}
+
+          />
           <button
             id="clearCart"
             className="clear-cart banner-btn"

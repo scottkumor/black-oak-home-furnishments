@@ -13,7 +13,7 @@ const CartModal = (props) => {
         return (
             <div>
                 <button className="modalView" onClick={onOpenModal}>View</button>
-                <Modal open={open} onClose={onCloseModal} focusTrapped={true} center blockScroll>
+                <Modal open={open} onClose={onCloseModal} focusTrapped={true} center blockScroll={true}>
                 <div className="modalContainer">
                     <h1 className="modalTitle">{props.title}</h1>
                     <div className="modalWrap">

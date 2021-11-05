@@ -8,8 +8,9 @@ section {
 
 [class^="head-"]{
     font-size: xxx-large;
+    text-transform: capitalize;
     width:100%;
-    margin-right:auto;
+    margin-right: auto;
     margin-left:3vh;
     padding:3vh;
     background: linear-gradient(to right, transparent, var(--mainGrey) 99%, transparent 100%);
